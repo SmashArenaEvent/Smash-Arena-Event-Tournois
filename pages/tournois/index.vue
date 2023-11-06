@@ -2,7 +2,7 @@
   <main>
     <h1>LISTE DES TOURNOIS</h1>
 
-    <RouterLink to="/">Retour accueil</RouterLink>
+    <a href="/">Retour accueil</a>
 
     <div class="card__tournois">
       <ul v-for="t in LISTE_TOURNOIS" :key="t.id">
@@ -12,9 +12,9 @@
         <li>type : {{ t.tournament.tournament_type }}</li>
         <li>date de début : {{ t.tournament.started_at }}</li>
         <li>statut : {{ t.tournament.state }}</li>
-        <RouterLink :to="`/tournois/${t.tournament.url}`"
-          >Voir la fiche de ce tournois</RouterLink
-        >
+        <a :href="`/tournois/${t.tournament.url}`">
+          Voir la fiche de ce tournois
+        </a>
       </ul>
     </div>
   </main>

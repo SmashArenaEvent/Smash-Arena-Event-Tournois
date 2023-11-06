@@ -3,12 +3,12 @@
     <h1>INSCRIPTION</h1>
 
     <ul>
-      <li><RouterLink to="/">Retour accueil</RouterLink></li>
-      <li><RouterLink to="/tournois">Retour liste des tournois</RouterLink></li>
+      <li><a href="/">Retour accueil</a></li>
+      <li><a href="/tournois">Retour liste des tournois</a></li>
       <li>
-        <RouterLink :to="`/tournois/${tournois_url}`">
+        <a :href="`/tournois/${tournois_url}`">
           Retour à la fiche du tournois
-        </RouterLink>
+        </a>
       </li>
     </ul>
 
@@ -29,14 +29,6 @@
         placeholder="Email"
         required
       />
-      <textarea
-        id="joueur_misc"
-        name="joueur_misc"
-        v-model="joueur_misc"
-        placeholder="Description, écrivez votre filière et vos mains"
-        cols="30"
-        rows="10"
-      ></textarea>
       <input
         type="submit"
         name="inscription"

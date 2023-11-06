@@ -1,10 +1,11 @@
 <template>
     <main>
         <h1>SMASH ARENA EVENT</h1>
+
     
         <ul>
             <li>
-                <RouterLink to="/tournois">Voir la liste des tournois</RouterLink>
+                <a href="/tournois">Voir la liste des tournois</a>
             </li>
         </ul>
     </main>
