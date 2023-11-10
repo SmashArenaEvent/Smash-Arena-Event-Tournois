@@ -26,13 +26,13 @@
       <div v-else>
         <div class="card__tournois">
           <ul v-for="t in TOURNOIS_PROCHAIN" :key="t.id">
-            <li>nom : {{ t.tournament.name }}</li>
-            <li>description : {{ t.tournament.description_source }}</li>
-            <li>jeu : {{ t.tournament.game_name }}</li>
-            <li>type : {{ t.tournament.tournament_type }}</li>
-            <li>date de début : {{ t.tournament.started_at }}</li>
-            <li>statut : {{ t.tournament.state }}</li>
-            <a :href="`/tournois/${t.tournament.url}`">
+            <li>nom : {{ t.name }}</li>
+            <li>description : {{ t.description_source }}</li>
+            <li>jeu : {{ t.game_name }}</li>
+            <li>type : {{ t.tournament_type }}</li>
+            <li>date de début : {{ t.started_at }}</li>
+            <li>statut : {{ t.state }}</li>
+            <a :href="`/tournois/${t.url}`">
               Voir la fiche de ce tournois
             </a>
           </ul>
@@ -49,13 +49,13 @@
       <div v-else>
         <div class="card__tournois">
           <ul v-for="t in TOURNOIS_ENCOURS" :key="t.id">
-            <li>nom : {{ t.tournament.name }}</li>
-            <li>description : {{ t.tournament.description_source }}</li>
-            <li>jeu : {{ t.tournament.game_name }}</li>
-            <li>type : {{ t.tournament.tournament_type }}</li>
-            <li>date de début : {{ t.tournament.started_at }}</li>
-            <li>statut : {{ t.tournament.state }}</li>
-            <a :href="`/tournois/${t.tournament.url}`">
+            <li>nom : {{ t.name }}</li>
+            <li>description : {{ t.description_source }}</li>
+            <li>jeu : {{ t.game_name }}</li>
+            <li>type : {{ t.tournament_type }}</li>
+            <li>date de début : {{ t.started_at }}</li>
+            <li>statut : {{ t.state }}</li>
+            <a :href="`/tournois/${t.url}`">
               Voir la fiche de ce tournois
             </a>
           </ul>
@@ -156,7 +156,7 @@ const GET_TOURNOIS_ENCOURS = axios.create({
 const fetchTournoisProchain = async () => {
   try {
     const response = await GET_TOURNOIS_PROCHAIN.get();
-    TOURNOIS.value = response.data.tournament;
+    TOURNOIS_PROCHAIN.value = response.data.tournament;
     // console.log("DATA : ", TOURNOIS.value)
   } catch (error) {
     console.error(
@@ -169,7 +169,7 @@ const fetchTournoisProchain = async () => {
 const fetchTournoisEncours = async () => {
   try {
     const response = await GET_TOURNOIS_ENCOURS.get();
-    TOURNOIS.value = response.data.tournament;
+    TOURNOIS_ENCOURS.value = response.data.tournament;
     // console.log("DATA : ", TOURNOIS.value)
   } catch (error) {
     console.error(
