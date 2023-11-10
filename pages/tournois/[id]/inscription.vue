@@ -22,11 +22,19 @@
         required
       />
       <input
-        type="email"
+        type="text"
         id="joueur_email"
         name="joueur_email"
         v-model="joueur_email"
         placeholder="Email"
+        required
+      />
+      <input
+        type="text"
+        id="joueur_email_extend"
+        name="joueur_email_extend"
+        v-model="joueur_email_extend"
+        disabled
         required
       />
       <input
@@ -36,6 +44,8 @@
         value="Je m'inscris"
       />
     </form>
+
+    <p>{{ message_inscription }}</p>
 
   </main>
 </template>
@@ -52,9 +62,8 @@ const tournois_url = route.params.id;
 
 const joueur_name = ref(null);
 const joueur_email = ref(null);
-const joueur_misc = ref(null);
-
-const NEW_PROFIL = ref([]);
+const joueur_email_extend = "@edu.univ-fcomte.fr";
+const message_inscription = ref(null);
 
 const GET_NEW_PROFIL = axios.create({
   baseURL: env.public.challongeApiUrl,
@@ -64,19 +73,24 @@ const function_inscription = async () => {
   const donneesFormulaire = {
     tournois_url: tournois_url.toString(),
     joueur_name: joueur_name.value.toString(),
-    joueur_email: joueur_email.value.toString(),
-    joueur_misc: joueur_misc.value.toString(),
+    joueur_email: joueur_email.value.toString() + joueur_email_extend,
   };
-  // console.log(donneesFormulaire)
+  console.log(donneesFormulaire)
+
   try {
     const response = await GET_NEW_PROFIL.post(
       "/inscription",
       donneesFormulaire
     );
-    NEW_PROFIL.value = response.data;
-    console.log(NEW_PROFIL);
+    console.log(response)
+    if (response.data == "mauvais email"){
+      message_inscription.value = "Vous devez vous inscrire avec votre mail universitaire Pour participer au tournois. Exemple : prenom.nom@edu.univ-fcomte.fr"
+    } else {
+      const router = useRouter();
+      router.push(`/tournois/${tournois_url}`);  
+    }
+    
   } catch (error) {
-    console.log(donneesFormulaire);
     console.error("Une erreur s'est produite lors de l'inscription :", error);
   }
 };

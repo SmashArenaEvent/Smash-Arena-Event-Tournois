@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>LISTE DES TOURNOIS</h1>
+    <h1>LISTE DE TOUS LES TOURNOIS</h1>
 
     <a href="/">Retour accueil</a>
 
