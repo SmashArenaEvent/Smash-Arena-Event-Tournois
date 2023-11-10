@@ -75,14 +75,14 @@ const function_inscription = async () => {
     joueur_name: joueur_name.value.toString(),
     joueur_email: joueur_email.value.toString() + joueur_email_extend,
   };
-  console.log(donneesFormulaire)
+  // console.log(donneesFormulaire)
 
   try {
     const response = await GET_NEW_PROFIL.post(
       "/inscription",
       donneesFormulaire
     );
-    console.log(response)
+    // console.log(response)
     if (response.data == "mauvais email"){
       message_inscription.value = "Vous devez vous inscrire avec votre mail universitaire Pour participer au tournois. Exemple : prenom.nom@edu.univ-fcomte.fr"
     } else {

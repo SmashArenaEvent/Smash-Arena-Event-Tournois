@@ -59,5 +59,5 @@ const { data: TOURNOIS } = await useAsyncData("tournois", async () => {
   return $fetch(env.public.challongeApiUrl + `/mon_tournois/${tournois_url}`);
 });
 
-console.log(TOURNOIS)
+// console.log(TOURNOIS)
 </script>
