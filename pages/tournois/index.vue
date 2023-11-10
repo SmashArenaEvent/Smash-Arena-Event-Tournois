@@ -5,7 +5,7 @@
     <a href="/">Retour accueil</a>
 
     <div class="card__tournois">
-      <ul v-for="t in LISTE_TOURNOIS" :key="t.id">
+      <ul v-for="t in TOURNOIS" :key="t.id">
         <li>nom : {{ t.tournament.name }}</li>
         <li>description : {{ t.tournament.description_source }}</li>
         <li>jeu : {{ t.tournament.game_name }}</li>
@@ -34,9 +34,26 @@
 </style>
 
 <script setup>
-const env = useRuntimeConfig();
+import axios from "axios";
 
-const {data: LISTE_TOURNOIS} = await useAsyncData("liste_tournois", async () => {
-  return $fetch(env.public.challongeApiUrl + "/liste_tournois")
-})
+const env = useRuntimeConfig();
+const TOURNOIS = ref([]);
+
+const GET_TOURNOIS = axios.create({
+  baseURL: env.public.challongeApiUrl + "/liste_tournois",
+});
+
+const fetchTournois = async () => {
+  try {
+    const response = await GET_TOURNOIS.get();
+    TOURNOIS.value = response.data;
+  } catch (error) {
+    console.error(
+      "Une erreur s'est produite lors de la récupération de la liste des tournois.",
+      error
+    );
+  }
+};
+
+onMounted(fetchTournois);
 </script>

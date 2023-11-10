@@ -7,7 +7,8 @@
       <li><a href="/tournois">Retour liste des tournois</a></li>
     </ul>
 
-    <iframe v-if="TOURNOIS.state === 'underway'"
+    <iframe
+      v-if="TOURNOIS.state === 'underway'"
       :src="`https://challonge.com/fr/${tournois_url}/module`"
       width="100%"
       height="500"
@@ -37,7 +38,8 @@
       </li>
     </ul>
 
-    <iframe v-if="TOURNOIS.state !== 'underway'"
+    <iframe
+      v-if="TOURNOIS.state !== 'underway'"
       :src="`https://challonge.com/fr/${tournois_url}/module`"
       width="100%"
       height="500"
@@ -48,7 +50,6 @@
   </main>
 </template>
 
-
 <script setup>
 import axios from "axios";
 
@@ -57,15 +58,15 @@ const route = useRoute();
 const tournois_url = route.params.id;
 const TOURNOIS = ref([]);
 
-const GET_TOURNOIS = axios.create({
+const GET_TOURNOI = axios.create({
   baseURL: env.public.challongeApiUrl + `/mon_tournois/${tournois_url}`,
 });
 
-const fetchTournois = async () => {
+const fetchTournoi = async () => {
   try {
-    const response = await GET_TOURNOIS.get();
+    const response = await GET_TOURNOI.get();
     TOURNOIS.value = response.data.tournament;
-    console.log("DATA : ", TOURNOIS.value);
+    // console.log("DATA : ", TOURNOIS.value)
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de la récupération du tournoi en front :",
@@ -74,5 +75,5 @@ const fetchTournois = async () => {
   }
 };
 
-onMounted(fetchTournois);
+onMounted(fetchTournoi);
 </script>

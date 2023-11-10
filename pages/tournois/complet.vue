@@ -5,7 +5,7 @@
     <a href="/">Retour accueil</a>
 
     <div class="card__tournois">
-      <ul v-for="t in LISTE_TOURNOIS_COMPLET" :key="t.id">
+      <ul v-for="t in TOURNOIS_COMPLET" :key="t.id">
         <li>nom : {{ t.tournament.name }}</li>
         <li>description : {{ t.tournament.description_source }}</li>
         <li>jeu : {{ t.tournament.game_name }}</li>
@@ -34,9 +34,26 @@
 </style>
 
 <script setup>
-const env = useRuntimeConfig();
+import axios from "axios";
 
-const {data: LISTE_TOURNOIS_COMPLET} = await useAsyncData("liste_tournois_complet", async () => {
-  return $fetch(env.public.challongeApiUrl + "/liste_tournois_complet")
-})
+const env = useRuntimeConfig();
+const TOURNOIS_COMPLET = ref([]);
+
+const GET_TOURNOIS_COMPLET = axios.create({
+  baseURL: env.public.challongeApiUrl + "/liste_tournois_complet",
+});
+
+const fetchTournoisComplet = async () => {
+  try {
+    const response = await GET_TOURNOIS_COMPLET.get();
+    TOURNOIS_COMPLET.value = response.data;
+  } catch (error) {
+    console.error(
+      "Une erreur s'est produite lors de la récupération de la liste des tournois terminés.",
+      error
+    );
+  }
+};
+
+onMounted(fetchTournoisComplet);
 </script>
