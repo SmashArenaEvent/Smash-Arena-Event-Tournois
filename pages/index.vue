@@ -20,18 +20,18 @@
     <section>
       <h2>Prochain tournois</h2>
 
-      <div v-if="TOURNOIS_PROCHAIN.length === 0">
+      <div v-if="!TOURNOIS_PROCHAIN">
         <p>Pas de tournois prévus pour le moment.</p>
       </div>
       <div v-else>
         <div class="card__tournois">
-          <ul v-for="t in TOURNOIS_PROCHAIN" :key="t.id">
-            <li>nom : {{ t.name }}</li>
-            <li>description : {{ t.description_source }}</li>
-            <li>jeu : {{ t.game_name }}</li>
-            <li>type : {{ t.tournament_type }}</li>
-            <li>date de début : {{ t.started_at }}</li>
-            <li>statut : {{ t.state }}</li>
+          <ul v-for="t in TOURNOIS_PROCHAIN" :key="t.tournament.id">
+            <li>nom : {{ t.tournament.name }}</li>
+            <li>description : {{ t.tournament.description_source }}</li>
+            <li>jeu : {{ t.tournament.game_name }}</li>
+            <li>type : {{ t.tournament.tournament_type }}</li>
+            <li>date de début : {{ t.tournament.started_at }}</li>
+            <li>statut : {{ t.tournament.state }}</li>
             <a :href="`/tournois/${t.url}`">
               Voir la fiche de ce tournois
             </a>
@@ -43,18 +43,18 @@
     <section>
       <h2>Tournois en cours</h2>
 
-      <div v-if="TOURNOIS_ENCOURS.length === 0">
+      <div v-if="!TOURNOIS_ENCOURS">
         <p>Pas de tournois en cours pour le moment.</p>
       </div>
       <div v-else>
         <div class="card__tournois">
-          <ul v-for="t in TOURNOIS_ENCOURS" :key="t.id">
-            <li>nom : {{ t.name }}</li>
-            <li>description : {{ t.description_source }}</li>
-            <li>jeu : {{ t.game_name }}</li>
-            <li>type : {{ t.tournament_type }}</li>
-            <li>date de début : {{ t.started_at }}</li>
-            <li>statut : {{ t.state }}</li>
+          <ul v-for="t in TOURNOIS_ENCOURS" :key="t.tournament.id">
+            <li>nom : {{ t.tournament.name }}</li>
+            <li>description : {{ t.tournament.description_source }}</li>
+            <li>jeu : {{ t.tournament.game_name }}</li>
+            <li>type : {{ t.tournament.tournament_type }}</li>
+            <li>date de début : {{ t.tournament.started_at }}</li>
+            <li>statut : {{ t.tournament.state }}</li>
             <a :href="`/tournois/${t.url}`">
               Voir la fiche de ce tournois
             </a>
@@ -156,8 +156,8 @@ const GET_TOURNOIS_ENCOURS = axios.create({
 const fetchTournoisProchain = async () => {
   try {
     const response = await GET_TOURNOIS_PROCHAIN.get();
-    TOURNOIS_PROCHAIN.value = response.data.tournament;
-    // console.log("DATA : ", TOURNOIS.value)
+    TOURNOIS_PROCHAIN.value = response.data;
+    // console.log("DATA : ", TOURNOIS_PROCHAIN.value)
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de la récupération de la liste des prochains tournois.",
@@ -169,8 +169,8 @@ const fetchTournoisProchain = async () => {
 const fetchTournoisEncours = async () => {
   try {
     const response = await GET_TOURNOIS_ENCOURS.get();
-    TOURNOIS_ENCOURS.value = response.data.tournament;
-    // console.log("DATA : ", TOURNOIS.value)
+    TOURNOIS_ENCOURS.value = response.data;
+    // console.log("DATA : ", TOURNOIS_ENCOURS.value)
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de la récupération de la liste des tournois en cours.",
@@ -182,8 +182,8 @@ const fetchTournoisEncours = async () => {
 // Montage de la Vue -----------------------------------------------------------------
 onMounted(() => {
   // chargement des données pour le site du tournois
-  fetchTournoisProchain;
-  fetchTournoisEncours;
+  fetchTournoisProchain();
+  fetchTournoisEncours();
 
   // Site Vitrine
   HeroImgAleatoire();
