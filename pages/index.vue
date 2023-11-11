@@ -20,7 +20,7 @@
     <section>
       <h2>Prochain tournois</h2>
 
-      <div v-if="!TOURNOIS_PROCHAIN">
+      <div v-if="TOURNOIS_PROCHAIN.length == 0">
         <p>Pas de tournois prévus pour le moment.</p>
       </div>
       <div v-else>
@@ -43,7 +43,7 @@
     <section>
       <h2>Tournois en cours</h2>
 
-      <div v-if="!TOURNOIS_ENCOURS">
+      <div v-if="TOURNOIS_ENCOURS.length == 0">
         <p>Pas de tournois en cours pour le moment.</p>
       </div>
       <div v-else>
