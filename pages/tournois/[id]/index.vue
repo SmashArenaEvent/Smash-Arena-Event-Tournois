@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>MON TOURNOIS : {{ TOURNOIS.name }}</h1>
+    <h1>MON TOURNOI : {{ TOURNOI.name }}</h1>
 
     <ul>
       <li><a href="/">Retour accueil</a></li>
@@ -8,8 +8,8 @@
     </ul>
 
     <iframe
-      v-if="TOURNOIS.state === 'underway'"
-      :src="`https://challonge.com/fr/${tournois_url}/module`"
+      v-if="TOURNOI.state === 'underway'"
+      :src="`https://challonge.com/fr/${tournoi_url}/module`"
       width="100%"
       height="500"
       frameborder="0"
@@ -18,29 +18,25 @@
     ></iframe>
 
     <ul>
-      <li>nom : {{ TOURNOIS.name }}</li>
-      <li>description : {{ TOURNOIS.description_source }}</li>
-      <li>jeu : {{ TOURNOIS.game_name }}</li>
-      <li>type : {{ TOURNOIS.tournament_type }}</li>
-      <li>date de début : {{ TOURNOIS.started_at }}</li>
-      <li>date de fin : {{ TOURNOIS.completed_at }}</li>
-      <li>statut : {{ TOURNOIS.state }}</li>
-      <li>inscription possible : {{ TOURNOIS.open_signup }}</li>
-      <li>type d'inscription : {{ TOURNOIS.registration_type }}</li>
-      <li>par équipe : {{ TOURNOIS.teams }}</li>
+      <li>nom : {{ TOURNOI.name }}</li>
+      <li>description : {{ TOURNOI.description_source }}</li>
+      <li>jeu : {{ TOURNOI.game_name }}</li>
+      <li>type : {{ TOURNOI.tournament_type }}</li>
+      <li>date de début : {{ TOURNOI.started_at }}</li>
+      <li>date de fin : {{ TOURNOI.completed_at }}</li>
+      <li>statut : {{ TOURNOI.state }}</li>
+      <li>inscription possible : {{ TOURNOI.open_signup }}</li>
+      <li>type d'inscription : {{ TOURNOI.registration_type }}</li>
+      <li>par équipe : {{ TOURNOI.teams }}</li>
     </ul>
 
-    <ul>
-      <li v-if="TOURNOIS.state == 'pending'">
-        <a :href="`/tournois/${TOURNOIS.url}/inscription`">
-          S'inscrire à ce tournois
-        </a>
-      </li>
-    </ul>
+    <a :href="`/tournois/${TOURNOI.url}/inscription`">
+      S'inscrire à ce tournois
+    </a>
 
     <iframe
-      v-if="TOURNOIS.state !== 'underway'"
-      :src="`https://challonge.com/fr/${tournois_url}/module`"
+      v-if="TOURNOI.state !== 'underway'"
+      :src="`https://challonge.com/fr/${tournoi_url}/module`"
       width="100%"
       height="500"
       frameborder="0"
@@ -55,18 +51,18 @@ import axios from "axios";
 
 const env = useRuntimeConfig();
 const route = useRoute();
-const tournois_url = route.params.id;
-const TOURNOIS = ref([]);
+const tournoi_url = route.params.id;
+const TOURNOI = ref([]);
 
 const GET_TOURNOI = axios.create({
-  baseURL: env.public.challongeApiUrl + `/mon_tournois/${tournois_url}`,
+  baseURL: env.public.challongeApiUrl + `/mon_tournois/${tournoi_url}`,
 });
 
 const fetchTournoi = async () => {
   try {
     const response = await GET_TOURNOI.get();
-    TOURNOIS.value = response.data.tournament;
-    // console.log("DATA : ", TOURNOIS.value)
+    TOURNOI.value = response.data.tournament;
+    // console.log("DATA : ", TOURNOI.value)
   } catch (error) {
     console.error(
       "Une erreur s'est produite lors de la récupération du tournoi en front :",
