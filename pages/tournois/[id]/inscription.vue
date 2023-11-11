@@ -13,36 +13,10 @@
     </ul>
 
     <form @submit.prevent="function_inscription" method="post">
-      <input
-        type="text"
-        id="joueur_name"
-        name="joueur_name"
-        v-model="joueur_name"
-        placeholder="Nom et Prénom"
-        required
-      />
-      <input
-        type="text"
-        id="joueur_email"
-        name="joueur_email"
-        v-model="joueur_email"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="text"
-        id="joueur_email_extend"
-        name="joueur_email_extend"
-        v-model="joueur_email_extend"
-        disabled
-        required
-      />
-      <input
-        type="submit"
-        name="inscription"
-        id="inscription"
-        value="Je m'inscris"
-      />
+      <input type="text" id="joueur_name" v-model="joueur_name" placeholder="Nom et Prénom" required/>
+      <input type="text" id="joueur_email" v-model="joueur_email" placeholder="Email" required/>
+      <input type="text" id="joueur_email_extend" v-model="joueur_email_extend" disabled required/>
+      <input type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
     </form>
 
     <p>{{ message_inscription }}</p>

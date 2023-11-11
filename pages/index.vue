@@ -32,7 +32,7 @@
             <li>type : {{ t.tournament.tournament_type }}</li>
             <li>date de début : {{ t.tournament.started_at }}</li>
             <li>statut : {{ t.tournament.state }}</li>
-            <a :href="`/tournois/${t.url}`">
+            <a :href="`/tournois/${t.tournament.url}`">
               Voir la fiche de ce tournois
             </a>
           </ul>
@@ -55,7 +55,7 @@
             <li>type : {{ t.tournament.tournament_type }}</li>
             <li>date de début : {{ t.tournament.started_at }}</li>
             <li>statut : {{ t.tournament.state }}</li>
-            <a :href="`/tournois/${t.url}`">
+            <a :href="`/tournois/${t.tournament.url}`">
               Voir la fiche de ce tournois
             </a>
           </ul>
