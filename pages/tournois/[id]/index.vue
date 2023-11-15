@@ -28,9 +28,10 @@
       <li>inscription possible : {{ TOURNOI.open_signup }}</li>
       <li>type d'inscription : {{ TOURNOI.registration_type }}</li>
       <li>par équipe : {{ TOURNOI.teams }}</li>
+      <li>nombre de joueurs : {{ TOURNOI.participants_count }}</li>
     </ul>
 
-    <a :href="`/tournois/${TOURNOI.url}/inscription`">
+    <a :href="`/tournois/${TOURNOI.url}/inscription`" v-if="TOURNOI.state == 'pending'">
       S'inscrire à ce tournois
     </a>
 
