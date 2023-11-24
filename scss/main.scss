@@ -20,12 +20,13 @@ body{
 
 h1{
     @include h1;
-    margin-bottom: $m-litle
+    margin-bottom: $m-litle;
 }
 
 h2{
     @include h2;
-    margin-bottom: $m-litle
+    margin-bottom: $m-litle;
+    text-align: center;
 }
 
 h3{
@@ -33,7 +34,7 @@ h3{
 }
 
 .bleu{
-    color: $color-main
+    color: $color-main;
 }
 
 button{
@@ -42,7 +43,7 @@ button{
 
 @include medium{
     .my_section{
-        padding: $m-big
+        padding: $m-big;
     }
 
     h1{

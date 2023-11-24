@@ -23,8 +23,8 @@
         z-index: -1;
         position: absolute;
         transform-origin: top;
-        top: -100px;
-        right: -200px;
+        top: 0px;
+        right: -210px;
         transform: rotate(45deg);
     }
 
