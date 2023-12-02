@@ -8,7 +8,7 @@
 .my_button{
     flex: none;
     display: inline-flex;
-    padding: $m-small $m-small+10;
+    padding: $m-small;
     min-width: 100px;
     height: fit-content;
     background: $color-white;
@@ -29,8 +29,16 @@
     
     &.-big{
         @include bouton_big;
-        padding: $m-litle $m-litle+15;
+        padding: $m-litle $m-small+15;
         min-width: 150px;
+    }
+    
+    @include medium{
+        padding: $m-small $m-small+10;
+
+        &.-big{
+            padding: $m-litle $m-litle+15;
+        }
     }
     
     &.-blue{
