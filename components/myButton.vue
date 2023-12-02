@@ -15,6 +15,8 @@
     transform: skewX(-25deg);
     text-align: center;
     color: $color_black;
+    transition: all 0.1s linear;
+    cursor: pointer;
     
     &-text{
         width: 100%;
