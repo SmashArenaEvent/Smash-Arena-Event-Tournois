@@ -1,6 +1,9 @@
 <template>
     <div class="card_tournoi">
-        <h3 class="card_tournoi-title">Tournois n°1</h3>
+        <div class="card_tournoi-header">
+            <h3 class="card_tournoi-header_title">Tournoi n°1</h3>
+            <p class="card_tournoi-header_type">Double élimination</p>
+        </div>
 
         <div class="card_tournoi-infos">
             <p class="card_tournoi-infos_date">10 Janvier 2024</p>
@@ -34,13 +37,25 @@
     overflow: hidden;
     box-shadow: 0 0 10px rgba($color-gray_darken, 95%);
 
-    &-title{
+    &-header{
         z-index: 5;
         position: relative;
-        color: $color-main;
+
+        &_title{
+            display: inline-block;
+            color: $color-main;
+            margin-right: $m-small;
+        }
+
+        &_type{
+            display: inline-block;
+            font-size: 0.8rem;
+        }
     }
     
     &-infos{
+        z-index: 5;
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -49,18 +64,18 @@
 
         &_date,
         &_lieu{
-            z-index: 5;
             font-weight: $font_weight-bold;
         }
 
         &_heure{
-            z-index: 5;
             color: $color-main_darken;
             margin-right: $m-litle;
         }
     }
 
     &-contenu{
+        z-index: 5;
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -69,13 +84,7 @@
         width: 100%;
 
         &_texte{
-            z-index: 5;
-            position: relative;
             flex: 40%;
-        }
-        
-        &_button{
-            z-index: 5;      
         }
     }
     
