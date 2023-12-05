@@ -1,16 +1,52 @@
 <template>
-  <main>
+  <main class="main">
+    <h1 class="my_section main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
+        <br><span class="bleu">T</span>ournois
+    </h1>
 
-    <myHero/>
+    <section class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length > 0">
+      <h2 class="hero-h2"><span class="bleu">En</span> cours</h2>
+      
+      <ul class="main-tournois_liste">
+        <li class="main-tournois_liste-item" v-for="tournoi in TOURNOIS_ENCOURS" :key="tournoi.id">
+          <cardTournoi v-bind="tournoi.tournament"/>
+        </li>
+      </ul>
+    </section>
 
+    <section class="my_section main-tournois" v-if="TOURNOIS_PROCHAIN.length > 0">
+      <h2 class="hero-h2">Prochainement</h2>
+      
+      <ul class="main-tournois_liste">
+        <li class="main-tournois_liste-item" v-for="tournoi in TOURNOIS_PROCHAIN" :key="tournoi.id">
+          <cardTournoi v-bind="tournoi.tournament"/>
+        </li>
+      </ul>
+    </section>
+
+    <div class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length == 0 && TOURNOIS_PROCHAIN.length == 0">     
+      <cardTournoi/>
+    </div>
   </main>
 </template>
 
 <style lang="scss">
+.main{
+  &-tournois{
+    &_liste{
+      &-item{
+        margin-bottom: $m-medium;
 
+        @include medium{
+          margin-bottom: $m-big;
+        }
+      }
+    }
+  }
+}
 </style>
 
-<!-- <script setup>
+<script setup>
 
 import axios from "axios";
 
@@ -58,4 +94,4 @@ onMounted(() => {
   fetchTournoisEncours();
 });
 
-</script> -->
+</script>
