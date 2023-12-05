@@ -1,7 +1,9 @@
 <template>
-    <button class="my_button" :class="className">
-        <span class="my_button-text"><slot/></span>
-    </button>
+    <RouterLink :to="url">
+        <button class="my_button" :class="className">
+            <span class="my_button-text"><slot/></span>
+        </button>
+    </RouterLink>
 </template>
 
 <style lang="scss">
@@ -63,6 +65,7 @@
 
 <script setup>
 const props = defineProps({
+  url: String,
   size: String,
   color: String,
   clicable: Boolean,
