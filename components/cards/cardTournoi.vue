@@ -1,25 +1,37 @@
 <template>
-    <div class="card_tournoi">
+    <div class="card_tournoi" v-if="name">
         <div class="card_tournoi-header">
-            <h3 class="card_tournoi-header_title">Tournoi n°1</h3>
-            <p class="card_tournoi-header_type">Double élimination</p>
+            <h3 class="card_tournoi-header_title">{{ name }}</h3>
+            <p class="card_tournoi-header_type">{{ tournament_type }}</p>
         </div>
 
         <div class="card_tournoi-infos">
-            <p class="card_tournoi-infos_date">10 Janvier 2024</p>
-            <p class="card_tournoi-infos_heure">14h - 19h</p>
-            <p class="card_tournoi-infos_lieu">Batiment B, Campus Montbéliard</p>
+            <p class="card_tournoi-infos_date">{{ date }}</p>
+            <p class="card_tournoi-infos_heure">{{ heure }}h</p>
+            <p class="card_tournoi-infos_lieu">Le EX-CDDP de Montbéliard</p>
         </div>
 
         <div class="card_tournoi-contenu">
-            <p class="card_tournoi-contenu_texte">Donut sesame snaps gingerbread gummi bears pudding wafer jelly liquorice sesame snaps. Cookie icing liquorice apple pie candy canes I love carrot cake jelly-o lollipop. Biscuit donut pastry I love I love. Toffee cookie pudding apple pie sweet sugar plum chocolate bar croissant halvah.</p>
+            <p class="card_tournoi-contenu_texte">{{ description }}</p>
     
-            <myButton size="big" color="blue" class="card_tournoi-contenu_button">Voir la Fiche du Tournoi</myButton>
+            <myButton :url="`/tournois/${id}`" size="big" color="blue" class="card_tournoi-contenu_button">Voir la Fiche du Tournoi</myButton>
         </div>
 
         <div class="card_tournoi-img">
-            <img class="" src="/img/persos.png" alt="fanart des persos de Smash Bros Ultimate">
+            <img src="/img/persos.png" alt="fanart des persos de Smash Bros Ultimate">
         </div>
+    </div>
+
+    <div class="card_tournoi" v-else>
+        <div class="card_tournoi-header">
+            <h3>Il n'y a rien à voir ici pour le moment</h3>
+        </div>
+
+        <div class="card_tournoi-infos card_tournoi-infos_date">Revenez plus tard</div>
+
+        <div class="card_tournoi-contenu">Vous pourrez suivre ici les différents tournois lorsqu'ils seront mis en ligne. Il n'y a pour le moment aucun tournoi à suivre. Nous vous invitions à revenir plus tard.</div>
+
+        <div class="card_tournoi-img"></div>
     </div>
 </template>
 
@@ -98,6 +110,7 @@
         transform-origin: center;
         transform: translate(50%, -50%) rotate(-25deg);
         overflow: hidden;
+        background: darken($color-gray_darken, 3%);
 
         img{
             z-index: 0;
@@ -147,5 +160,19 @@
 </style>
 
 <script setup>
+const props = defineProps({
+    id: Number,
+    name: String,
+    tournament_type: String,
+    start_at: String,
+    description: String,
+});
+
+const dateObj = new Date(props.start_at);
+
+const options = { day: 'numeric', month: 'long', year: 'numeric' };
+const date = dateObj.toLocaleDateString('fr-FR', options);
+
+const heure = dateObj.getHours();
 
 </script>
