@@ -54,7 +54,6 @@
     font-family: $font-texte;
     font-size: $mobile-font_regular;
     font-weight: $font_weight-regular;
-    line-height: 1.25;
 
     @include medium {
         font-size: $pc-font_regular;
