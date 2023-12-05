@@ -18,6 +18,6 @@
     "vue-router": "^4.2.5"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": "latest"
   }
 }
