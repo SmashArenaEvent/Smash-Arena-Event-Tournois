@@ -200,24 +200,49 @@
     // description et classe de la transition
     .v-enter-active{
         transition: opacity 0.5s ease;
+        -webkit-transition: opacity 0.5s ease;
+        -moz-transition: opacity 0.5s ease;
+        -o-transition: opacity 0.5s ease;
+        -ms-transition: opacity 0.5s ease;
         
         .header-mobile_page-nav{
             transition: opacity 0.3s 0.3s ease-in-out;
+            -webkit-transition: opacity 0.3s 0.3s ease-in-out;
+            -moz-transition: opacity 0.3s 0.3s ease-in-out;
+            -o-transition: opacity 0.3s 0.3s ease-in-out;
+            -ms-transition: opacity 0.3s 0.3s ease-in-out;
         }        
         
         .header-mobile_page-deco{
             transition: right 0.3s 0.5s ease, top 0.3s 0.5s ease, bottom 0.3s 0.5s ease, left 0.3s 0.5s ease,;
+            -webkit-transition: right 0.5s ease, top 0.5s ease, bottom 0.5s ease, left 0.5s ease,;
+            -moz-transition: right 0.3s 0.5s ease, top 0.3s 0.5s ease, bottom 0.3s 0.5s ease, left 0.3s 0.5s ease,;
+            -o-transition: right 0.3s 0.5s ease, top 0.3s 0.5s ease, bottom 0.3s 0.5s ease, left 0.3s 0.5s ease,;
+            -ms-transition: right 0.3s 0.5s ease, top 0.3s 0.5s ease, bottom 0.3s 0.5s ease, left 0.3s 0.5s ease,;
         }        
     }
+
     .v-leave-active {
         transition: opacity 0.5s 0.3s ease;
+        -webkit-transition: opacity 0.5s 0.3s ease;
+        -moz-transition: opacity 0.5s 0.3s ease;
+        -o-transition: opacity 0.5s 0.3s ease;
+        -ms-transition: opacity 0.5s 0.3s ease;
         
         .header-mobile_page-nav{
             transition: opacity 0.2s 0.1s ease-in-out;
+            -webkit-transition: opacity 0.2s 0.1s ease-in-out;
+            -moz-transition: opacity 0.2s 0.1s ease-in-out;
+            -o-transition: opacity 0.2s 0.1s ease-in-out;
+            -ms-transition: opacity 0.2s 0.1s ease-in-out;
         }        
         
         .header-mobile_page-deco{
             transition: right 0.3s ease, top 0.3s ease, bottom 0.3s ease, left 0.3s ease,;
+            -webkit-transition: right 0.3s ease, top 0.3s ease, bottom 0.3s ease, left 0.3s ease,;
+            -moz-transition: right 0.3s ease, top 0.3s ease, bottom 0.3s ease, left 0.3s ease,;
+            -o-transition: right 0.3s ease, top 0.3s ease, bottom 0.3s ease, left 0.3s ease,;
+            -ms-transition: right 0.3s ease, top 0.3s ease, bottom 0.3s ease, left 0.3s ease,;
         }        
     }
     
