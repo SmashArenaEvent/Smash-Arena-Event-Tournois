@@ -34,18 +34,22 @@
                 <iconLogo/>
             </RouterLink>
 
-            <div class="header-mobile_head-menu" @click="menuOuvert = !menuOuvert">Menu</div>
+            <div class="header-mobile_head-menu" @click="menuOuvert = !menuOuvert" :class="{ 'menu--ouvert': menuOuvert }">
+                <div class="menu_bar bar_top"></div>
+                <div class="menu_bar bar_mil"></div>
+                <div class="menu_bar bar_bot"></div>
+            </div>
         </div>
 
         <Transition>
             <div v-if="menuOuvert" class="header-mobile_page">
                 <nav class="header-mobile_page-nav">
                     <ul>
-                        <li><myButton url="/">Accueil</myButton></li>
-                        <li><myButton url="/">Historique</myButton></li>
-                        <li><myButton url="/">Règles</myButton></li>
-                        <li><myButton url="/">FAQ</myButton></li>
-                        <li><myButton url="/">Contact</myButton></li>
+                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">Accueil</myButton></li>
+                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">Historique</myButton></li>
+                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">Règles</myButton></li>
+                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">FAQ</myButton></li>
+                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">Contact</myButton></li>
                     </ul>
                 </nav>
 
@@ -145,6 +149,70 @@
             width: 50px;
             fill: $color-white;
         }
+
+        &-menu{
+            height: 30px;
+            width: 50px;
+            position: relative;
+            cursor: pointer;
+
+            .menu_bar{
+                position: absolute;
+                width: 50px;
+                height: 5px;
+                transform-origin: center;
+                background: $color-white;
+                left: 0;
+            }
+
+            .bar_top{
+                top: 0;
+            }
+            .bar_mil{
+                transform: translateY(-50%);
+                top: 50%;
+            }
+            .bar_bot{
+                bottom: 0;
+            }
+        }
+
+        .menu--ouvert{
+            
+            .menu_bar{
+                transform-origin: center;
+                transition: all 0.5s ease-in-out;
+                top: 50%;
+            }
+
+            .bar_top{
+                transform: translateY(-25%);
+                rotate: -45deg;
+            }
+
+            .bar_mil{
+                opacity: 0;
+            }
+
+            .bar_bot{
+                transform: translateY(25%);
+                rotate: -135deg;
+            }
+        }
+
+        @include medium{
+            padding: $m-small $m-medium;
+
+            &-logo{
+                width: 80px;
+            }
+
+            &-menu{
+                width: 80px;
+                height: 35px;
+            }
+        }
+
     }
 
     &_page{
@@ -183,7 +251,6 @@
             width: 70%;
             height: fit-content;
             rotate: 45deg;
-            
         }
 
         .deco_1{
@@ -221,7 +288,6 @@
             -ms-transition: right 0.3s 0.5s ease, top 0.3s 0.5s ease, bottom 0.3s 0.5s ease, left 0.3s 0.5s ease,;
         }        
     }
-
     .v-leave-active {
         transition: opacity 0.5s 0.3s ease;
         -webkit-transition: opacity 0.5s 0.3s ease;
