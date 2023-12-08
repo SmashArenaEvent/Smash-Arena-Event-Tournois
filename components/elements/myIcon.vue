@@ -9,9 +9,9 @@
 <style lang="scss">
 .icon{
     display: block;
-    width: 50px;
-    height: 50px;
-    padding: 25%;
+    width: 40px;
+    height: 40px;
+    padding: 23%;
     border: $color-white 1px solid;
     border-radius: 100%;
     text-align: center;
