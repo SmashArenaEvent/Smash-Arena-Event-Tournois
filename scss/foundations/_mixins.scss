@@ -71,7 +71,9 @@
 }
 
 @mixin bouton_big{
+    font-family: $font-title;
     font-size: $mobile-font_semibig;
+    text-transform: uppercase;
     
     @include medium {
         font-size: $pc-font_semibig;
