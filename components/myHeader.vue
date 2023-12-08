@@ -1,5 +1,5 @@
 <template>
-    <div class="header-pc">
+    <header class="header-pc">
         <RouterLink to="/" class="header-pc_logo">
             <iconLogo/>
         </RouterLink>
@@ -20,15 +20,15 @@
 
         <nav class="header-pc_icons">
             <ul>
-                <li><myIcon/></li>
-                <li><myIcon name = "x"/></li>
-                <li><myIcon name = "facebook"/></li>
+                <li><myIcon url="https://www.instagram.com/smash_arena_event"/></li>
+                <li><myIcon name = "x" url="https://twitter.com/SmashArenaEvent"/></li>
+                <li><myIcon name = "facebook" url="https://www.facebook.com/people/Smash-Arena-Event/61553864250828/"/></li>
                 <li><myIcon name = "twitch"/></li>
             </ul>
         </nav>
-    </div>
+    </header>
 
-    <div class="header-mobile">
+    <header class="header-mobile">
         <div class="header-mobile_head">
             <RouterLink to="/" class="header-mobile_head-logo">
                 <iconLogo/>
@@ -57,7 +57,7 @@
                 <deco class="header-mobile_page-deco deco_2"/>
             </div>
         </Transition>
-    </div>
+    </header>
 </template>
 
 <style lang="scss">
@@ -112,6 +112,11 @@
             flex-wrap: wrap;
             align-items: center;
             gap: $m-small;
+
+            li{
+                width: 60px;
+                aspect-ratio: 1/1;
+            }
         }
     }
 
