@@ -31,7 +31,7 @@
       <cardTournoi/>
     </div>
 
-    <aPropos/>
+    <aPropos :membres="a_propos.data.membre"/>
 
   </main>
 </template>
@@ -55,12 +55,12 @@
 <script setup>
 // import de Prismic
 const { client } = usePrismic();
-const { data: home, error } = await useAsyncData("home", () =>
-  client.getSingle("homepage")
+const { data: a_propos, error } = await useAsyncData("a_propos", () =>
+  client.getSingle("a_propos")
 )
 
-if (!home.value || error.value){
-  throw createError({statusCode: 404, statusMessage: "La page d'accueil est introuvable"})
+if (!a_propos.value || error.value){
+  throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section a_propos"})
 }
 
 // import d'axios et des donées des tournois
