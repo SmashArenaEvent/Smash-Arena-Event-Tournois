@@ -5,12 +5,8 @@
         <ul>
             <li>
                 <cardAssos
-                    initials="vs"
-                    img="/membresAssos/valentin.jpg"
-                    prenom="Valentin"
-                    nom="Saraiva"
-                    adjectif="L'idéaliste"
-                    role="Président & Développeur"
+                    v-for="membre in membres"
+                    v-bind="membre"
                 />
             </li>
         </ul>
@@ -23,5 +19,7 @@
 </style>
 
 <script setup>
-
+const props = defineProps({
+  membres: Object,
+});
 </script>
