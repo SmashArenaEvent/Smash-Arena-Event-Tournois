@@ -1,6 +1,6 @@
 <template>
     <div class="cardAssos">
-        <MyInitials class="cardAssos_initials" :initiales="initiales"/>
+        <MyInitiales class="cardAssos_initials" :initiales="initiales"/>
 
         <div class="cardAssos_photo">
             <PrismicImage class="cardAssos_photo-img" :field="photo" />
