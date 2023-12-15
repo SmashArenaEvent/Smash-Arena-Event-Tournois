@@ -31,7 +31,7 @@
       <cardTournoi/>
     </div>
 
-    <aPropos :membres="a_propos.data.membre"/>
+    <sectionAPropos :membres="a_propos.data.membre"/>
 
   </main>
 </template>
