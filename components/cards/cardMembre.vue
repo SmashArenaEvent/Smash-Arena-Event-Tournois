@@ -1,6 +1,6 @@
 <template>
     <div class="cardAssos">
-        <MyInitiales class="cardAssos_initials" :initiales="initiales"/>
+        <MyInitiales class="cardAssos_initiales" :initiales="initiales"/>
 
         <div class="cardAssos_photo">
             <PrismicImage class="cardAssos_photo-img" :field="photo" />
@@ -18,7 +18,7 @@
     width: 130px;
     text-align: center;
 
-    &_initials{
+    &_initiales{
         position: absolute;
         top: 0;
         left: 0;
@@ -64,7 +64,7 @@
     @include medium{
         width: 200px;
 
-        &_initials{
+        &_initiales{
             scale: 0.7;
         }
 
