@@ -114,7 +114,7 @@
             gap: $m-small;
 
             li{
-                width: 60px;
+                width: 50px;
                 aspect-ratio: 1/1;
             }
         }
