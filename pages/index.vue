@@ -4,6 +4,7 @@
         <br><span class="bleu">T</span>ournois
     </h1>
 
+    <!-- liste des tournois en cours -->
     <section class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length > 0">
       <h2 class="hero-h2"><span class="bleu">En</span> cours</h2>
       
@@ -14,6 +15,7 @@
       </ul>
     </section>
 
+    <!-- liste des tournois prévus -->
     <section class="my_section main-tournois" v-if="TOURNOIS_PROCHAIN.length > 0">
       <h2 class="hero-h2">Prochainement</h2>
       
@@ -24,9 +26,13 @@
       </ul>
     </section>
 
+    <!-- card à afficher lorsqu'il n'y a ni tournois en cours ni prévus -->
     <div class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length == 0 && TOURNOIS_PROCHAIN.length == 0">     
       <cardTournoi/>
     </div>
+
+    <aPropos/>
+
   </main>
 </template>
 
@@ -47,7 +53,17 @@
 </style>
 
 <script setup>
+// import de Prismic
+const { client } = usePrismic();
+const { data: home, error } = await useAsyncData("home", () =>
+  client.getSingle("homepage")
+)
 
+if (!home.value || error.value){
+  throw createError({statusCode: 404, statusMessage: "La page d'accueil est introuvable"})
+}
+
+// import d'axios et des donées des tournois
 import axios from "axios";
 
 const env = useRuntimeConfig();
