@@ -1,34 +1,34 @@
 <template>
     <div>
-        <component :is="getInitials"/>
+        <component :is="getInitiales"/>
     </div>
 </template>
 
 <script setup>
-import initialAR from '@/components/initials/initialAR.vue'
-import initialBR from '@/components/initials/initialBR.vue'
-import initialEF from '@/components/initials/initialEF.vue'
-import initialEP from '@/components/initials/initialEP.vue'
-import initialVS from '@/components/initials/initialVS.vue'
+import initialeAR from '@/components/initiales/initialeAR.vue'
+import initialeBR from '@/components/initiales/initialeBR.vue'
+import initialeEF from '@/components/initiales/initialeEF.vue'
+import initialeEP from '@/components/initiales/initialeEP.vue'
+import initialeVS from '@/components/initiales/initialeVS.vue'
 
 const props = defineProps({
-    initials: String,
+    initiales: String,
 })
 
-const getInitials = computed(() => {
-  switch (props.initials) {
+const getInitiales = computed(() => {
+  switch (props.initiales) {
     case 'ar':
-        return initialAR
+        return initialeAR
     case 'br':
-        return initialBR
+        return initialeBR
     case 'ef':
-        return initialEF
+        return initialeEF
     case 'ep':
-        return initialEP
+        return initialeEP
     case 'vs':
-        return initialVS
+        return initialeVS
     default:
-        return initialVS
+        return initialeVS
   }
 })
 </script>

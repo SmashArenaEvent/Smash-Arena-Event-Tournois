@@ -1,6 +1,6 @@
 <template>
     <div class="cardAssos">
-        <MyInitials class="cardAssos_initials" :initials="initials"/>
+        <MyInitials class="cardAssos_initials" :initiales="initiales"/>
 
         <div class="cardAssos_photo">
             <PrismicImage class="cardAssos_photo-img" :field="photo" />
@@ -87,7 +87,7 @@
 
 <script setup>
 const props = defineProps({
-    initials: String,
+    initiales: String,
     photo: String,
     prenom: String,
     nom: String,
