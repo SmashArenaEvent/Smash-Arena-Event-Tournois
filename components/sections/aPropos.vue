@@ -4,7 +4,7 @@
 
         <ul class="aPropos_liste">
             <li v-for="membre in membres">
-                <cardAssos v-bind="membre"/>
+                <cardMembre v-bind="membre"/>
             </li>
         </ul>
 
