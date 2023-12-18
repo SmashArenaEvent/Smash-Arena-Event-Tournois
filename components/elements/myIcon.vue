@@ -33,6 +33,12 @@
 
 <script setup>
 import iconEpee from '@/components/icons/iconEpee.vue'
+import iconFleche from '@/components/icons/iconFleche.vue'
+import iconEtoile from '@/components/icons/iconEtoile.vue'
+import iconFeuille from '@/components/icons/iconFeuille.vue'
+import iconPoing from '@/components/icons/iconPoing.vue'
+import iconPacman from '@/components/icons/iconPacman.vue'
+
 import iconInsta from '@/components/icons/iconInsta.vue'
 import iconX from '@/components/icons/iconX.vue'
 import iconFacebook from '@/components/icons/iconFacebook.vue'
@@ -48,6 +54,17 @@ const getIcon = computed(() => {
   switch (props.name) {
     case 'epee':
         return iconEpee
+    case 'fleche':
+        return iconFleche
+    case 'etoile':
+        return iconEtoile
+    case 'feuille':
+        return iconFeuille
+    case 'poing':
+        return iconPoing
+    case 'pacman':
+        return iconPacman
+
     case 'twitch':
         return iconTwitch
     case 'x':
