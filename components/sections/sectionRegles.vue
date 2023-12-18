@@ -3,11 +3,18 @@
         <h2><span class="bleu">Les règles</span> principales</h2>
 
         <ul class="section_regles-liste">
-            <li v-for="regle in regles" :key="regle.id">
-                <PrismicText class="regle_titre" :field="regle.titre" />
+            <li v-for="(regle, index) in reglesAffichees" :key="regle.id">
+
+                <div class="regle_head">
+                    <myIcon class="regle_icon" :name="tabIcons[index]"/>
+                    <PrismicText class="regle_titre" :field="regle.titre" />
+                </div>
+
                 <PrismicRichText class="regle_texte" :field="regle.texte" />
             </li>
         </ul>
+
+        <myButton class="section_regles-button" url="/">Découvrir les autres règles</myButton>
 
     </section>
 </template>
@@ -29,14 +36,28 @@
                 background: $color-main;
             }
 
-            .regle_titre{
-                font-family: $font-title;
-                font-size: $mobile-font_semibig;
-                text-transform: uppercase;
+            .regle_head{
+                display: flex;
+                align-items: center;
+                gap: 15px;
                 margin-bottom: 15px;
+
+                .regle_icon{
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2rem;
+                }
+    
+                .regle_titre{
+                    display: inline-block;
+                    width: fit-content;
+                    font-family: $font-title;
+                    font-size: $mobile-font_semibig;
+                    text-transform: uppercase;
+                }
             }
         }
-        
+
         @include medium{
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: $m-medium;
@@ -44,12 +65,28 @@
             li{
                 padding: $m-medium;
 
-                .regle_titre{
-                    font-size: $pc-font_semibig;
+                .regle_head{
                     margin-bottom: $m-litle;
+                    gap: 25px;
+                    
+                    .regle_icon{
+                        width: 3rem;
+                        height: 3rem;
+                    }
+
+                    .regle_titre{
+                        font-size: $pc-font_semibig;
+                    }
                 }
+
             }
         }
+    }
+
+    &-button{
+        display: block;
+        width: fit-content;
+        margin: $m-medium auto;
     }
 }
 </style>
@@ -59,4 +96,38 @@ const props = defineProps({
   regles: Object,
 });
 
+// liste des icons
+const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille"]
+
+// liste des règles à afficher (change en fonction de la taille d'écran)
+const reglesAffichees = ref([]);
+
+// Fonction pour définir le nombre de règles à afficher en fonction de la largeur de l'écran
+const calculeReglesAffichees = () => {
+  if (window.innerWidth <= 768) {
+    reglesAffichees.value = props.regles.slice(0, 3);
+  } else {
+    reglesAffichees.value = props.regles.slice(0, 6);
+  }
+};
+
+// Appel initial pour définir le nombre de règles à afficher en fonction de la taille de l'écran
+onMounted(() => {
+  calculeReglesAffichees();
+});
+
+// Écouteur d'événement pour gérer les changements de taille d'écran et ajuster le nombre de règles à afficher
+const resizeHandler = () => {
+  calculeReglesAffichees();
+};
+
+// onMounted = ne s'execute qu'une fois le composant chargé (exemple : on ne peut pas mesurer la taille de la fenetre si celle-ci n'est pas créer)
+onMounted(() => {
+  window.addEventListener('resize', resizeHandler);
+});
+
+// onUnmounted = s'execute au moment de quitter la page, est utiliser pour supprimer les écouteur d'événement et libéré des ressources
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeHandler);
+});
 </script>

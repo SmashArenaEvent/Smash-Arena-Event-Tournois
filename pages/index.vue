@@ -33,8 +33,6 @@
 
     <SectionRegles :regles="regles.data.regle"/>
 
-    <!-- {{ regles.data }} -->
-
     <sectionAPropos :membres="a_propos.data.membre"/>
 
   </main>
