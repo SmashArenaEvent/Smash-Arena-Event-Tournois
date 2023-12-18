@@ -31,6 +31,10 @@
       <cardTournoi/>
     </div>
 
+    <SectionRegles :regles="regles.data.regle"/>
+
+    <!-- {{ regles.data }} -->
+
     <sectionAPropos :membres="a_propos.data.membre"/>
 
   </main>
@@ -55,12 +59,21 @@
 <script setup>
 // import de Prismic
 const { client } = usePrismic();
-const { data: a_propos, error } = await useAsyncData("a_propos", () =>
+
+// import du document A Propos
+const { data: a_propos, error: a_propos_error } = await useAsyncData("a_propos", () =>
   client.getSingle("a_propos")
 )
-
-if (!a_propos.value || error.value){
+if (!a_propos.value || a_propos_error.value){
   throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section a_propos"})
+}
+
+// import du document Règles
+const { data: regles, error: regles_error } = await useAsyncData("regles", () =>
+  client.getSingle("regles")
+)
+if (!regles.value || regles_error.value){
+  throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
 }
 
 // import d'axios et des donées des tournois
