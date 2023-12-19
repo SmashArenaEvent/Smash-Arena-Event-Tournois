@@ -38,6 +38,12 @@ import iconEtoile from '@/components/icons/iconEtoile.vue'
 import iconFeuille from '@/components/icons/iconFeuille.vue'
 import iconPoing from '@/components/icons/iconPoing.vue'
 import iconPacman from '@/components/icons/iconPacman.vue'
+import iconOeuf from '@/components/icons/iconOeuf.vue'
+import iconPokeball from '@/components/icons/iconPokeball.vue'
+import iconFleur from '@/components/icons/iconFleur.vue'
+import iconCourrone from '@/components/icons/iconCourrone.vue'
+import iconCube from '@/components/icons/iconCube.vue'
+import iconTriangle from '@/components/icons/iconTriangle.vue'
 
 import iconInsta from '@/components/icons/iconInsta.vue'
 import iconX from '@/components/icons/iconX.vue'
@@ -64,6 +70,18 @@ const getIcon = computed(() => {
         return iconPoing
     case 'pacman':
         return iconPacman
+    case 'oeuf':
+        return iconOeuf
+    case 'pokeball':
+        return iconPokeball
+    case 'fleur':
+        return iconFleur
+    case 'courrone':
+        return iconCourrone
+    case 'cube':
+        return iconCube
+    case 'triangle':
+        return iconTriangle
 
     case 'twitch':
         return iconTwitch

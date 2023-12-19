@@ -8,7 +8,7 @@
             <ul>
                 <li><RouterLink to="/">Accueil</RouterLink></li>
                 <li><RouterLink to="/">Historique</RouterLink></li>
-                <li><RouterLink to="/">Règles</RouterLink></li>
+                <li><RouterLink to="/regles">Règles</RouterLink></li>
                 <li><RouterLink to="/">FAQ</RouterLink></li>
                 <li><RouterLink to="/">à propos & contact</RouterLink></li>
             </ul>

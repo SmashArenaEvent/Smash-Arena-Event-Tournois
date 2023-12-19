@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main>
     <h1 class="my_section main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
         <br><span class="bleu">T</span>ournois
     </h1>

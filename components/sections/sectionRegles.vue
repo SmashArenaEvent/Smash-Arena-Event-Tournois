@@ -3,7 +3,7 @@
         <h2><span class="bleu">Les règles</span> principales</h2>
 
         <ul class="section_regles-liste">
-            <li v-for="(regle, index) in reglesAffichees" :key="regle.id">
+            <li v-for="(regle, index) in reglesAffichees" :key="index">
 
                 <div class="regle_head">
                     <myIcon class="regle_icon" :name="tabIcons[index]"/>
@@ -14,7 +14,7 @@
             </li>
         </ul>
 
-        <myButton class="section_regles-button" url="/">Découvrir les autres règles</myButton>
+        <myButton class="section_regles-button" url="/regles">Découvrir les autres règles</myButton>
 
     </section>
 </template>
@@ -29,11 +29,11 @@
 
         li{
             padding: $m-litle;
-            border: 2px solid $color-main;
+            border: 2px solid $color-main_darken;
             border-radius: 10px;
 
             &:nth-child(2n-1){
-                background: $color-main;
+                background: $color-main_darken;
             }
 
             .regle_head{
@@ -46,6 +46,8 @@
                     display: inline-block;
                     width: 2rem;
                     height: 2rem;
+                    fill: $color-white;
+                    stroke: $color-white;
                 }
     
                 .regle_titre{

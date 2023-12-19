@@ -1,0 +1,3 @@
+<template>
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 48 48"><g fill="none"><path stroke="inherit" stroke-width="4" d="M24 44c10.252 0 16-6.954 16-18S31.132 4 24 4S8 14.954 8 26s5.748 18 16 18Z" clipRule="evenodd"></path><path fill="inherit" d="M21 38a3 3 0 1 0 0-6a3 3 0 0 0 0 6"></path><path fill="inherit" fillRule="evenodd" d="M16 29.668a2 2 0 1 0 0-4a2 2 0 0 0 0 4" clipRule="evenodd"></path></g></svg>
+</template>
