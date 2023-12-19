@@ -88,10 +88,10 @@
 <script setup>
 const props = defineProps({
     initiales: String,
-    photo: String,
-    prenom: String,
-    nom: String,
-    adjectif: String,
-    role: String,
+    photo: Object,
+    prenom: Object,
+    nom: Object,
+    adjectif: Object,
+    role: Object,
 })
 </script>
