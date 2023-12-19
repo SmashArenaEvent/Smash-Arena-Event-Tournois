@@ -14,6 +14,11 @@
             </li>
         </ul>
 
+        <div class="regles_faq">
+            <p>Vous avez des doutes ? Besoin de précisions ? Vous pouvez consulter notre FAQ pour vous éclairer !</p>
+            <myButton url="/foire-aux-questions">Consulter la FAQ</myButton>
+        </div>
+
     </main>
 </template>
 
@@ -88,6 +93,23 @@
                 }
 
             }
+        }
+    }
+
+    &_faq{
+        text-align: center;
+        margin: $m-medium 0;
+        
+        p{
+            margin: $m-litle 0;
+        }
+
+        @include medium{
+            margin: $m-big 0;
+
+            p{
+                margin: $m-medium 0
+            };
         }
     }
 }
