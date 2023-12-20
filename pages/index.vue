@@ -33,6 +33,8 @@
 
     <SectionRegles :regles="regles.data.regle"/>
 
+    <SectionFaq/>
+
     <sectionAPropos :membres="a_propos.data.membre"/>
 
   </main>
