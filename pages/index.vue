@@ -33,7 +33,7 @@
 
     <SectionRegles :regles="regles.data.regle"/>
 
-    <SectionFaq/>
+    <SectionFaq :faq="faq.data.question"/>
 
     <sectionAPropos :membres="a_propos.data.membre"/>
 
@@ -74,6 +74,14 @@ const { data: regles, error: regles_error } = await useAsyncData("regles", () =>
 )
 if (!regles.value || regles_error.value){
   throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
+}
+
+// import du document FAQ
+const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
+  client.getSingle("faq")
+)
+if (!faq.value || faq_error.value){
+  throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
 }
 
 // import d'axios et des donées des tournois
