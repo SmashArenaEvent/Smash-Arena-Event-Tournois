@@ -3,7 +3,7 @@
         <h2><span class="bleu">Foire Aux</span> Questions</h2>
 
         <ul class="section_faq-liste">
-            <li class="section_faq-liste-item" v-for="(question, index) in faq" :key="index">
+            <li class="section_faq-liste-item" v-for="(question, index) in questionsAffichees" :key="index">
                 <!-- bouton radio pour determiner si l'utilisateur à cliqué que cette question ou non -->
                 <input :id="'question_' + index" type="radio" name="questions" />
 
@@ -132,6 +132,13 @@
 
 <script setup>
 const props = defineProps({
-  faq: Object,
+    faq: Object,
 });
+
+
+// Fonction pour définir le nombre de questions à afficher
+const questionsAffichees = computed(() => {
+    return props.faq.slice(0, 3);
+});
+
 </script>

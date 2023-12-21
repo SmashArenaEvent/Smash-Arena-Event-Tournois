@@ -99,8 +99,4 @@ const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
 if (!faq.value || faq_error.value){
     throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
 }
-
-// liste des icons
-const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille", "oeuf", "pokeball", "fleur", "courrone", "cube", "triangle"]
-
 </script>
