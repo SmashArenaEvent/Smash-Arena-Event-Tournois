@@ -16,7 +16,7 @@
 
         <div class="regles_faq">
             <p>Vous avez des doutes ? Besoin de précisions ? Vous pouvez consulter notre FAQ pour vous éclairer !</p>
-            <myButton url="/">Consulter la FAQ</myButton>
+            <myButton url="/foire-aux-questions">Consulter la FAQ</myButton>
         </div>
 
     </main>
@@ -26,8 +26,6 @@
 .regles{
 
     &_titre{
-        text-align: center;
-
         &::first-letter{
             color: $color-main;
         }

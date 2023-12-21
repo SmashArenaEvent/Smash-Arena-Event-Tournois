@@ -1,6 +1,6 @@
 <template>
     <section class="my_section section_faq">
-        <h2><span class="bleu">Foire Aux</span> Questions </h2>
+        <h2><span class="bleu">Foire Aux</span> Questions</h2>
 
         <ul class="section_faq-liste">
             <li class="section_faq-liste-item" v-for="(question, index) in faq" :key="index">
@@ -17,7 +17,7 @@
             </li>
         </ul>
 
-        <myButton class="section_faq-button" url="/">Consulter toute la FAQ</myButton>
+        <myButton class="section_faq-button" url="/foire-aux-questions">Consulter toute la FAQ</myButton>
     </section>
 </template>
 
