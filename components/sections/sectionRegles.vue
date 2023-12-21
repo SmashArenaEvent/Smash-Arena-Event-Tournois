@@ -94,9 +94,20 @@
 </style>
 
 <script setup>
-const props = defineProps({
-  regles: Object,
-});
+// import de Prismic
+const { client } = usePrismic();
+
+// import du document Règles
+const { data: regles, error: regles_error } = await useAsyncData("regles", () =>
+  client.getSingle("regles")
+)
+if (!regles.value || regles_error.value){
+  throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
+}
+
+const mesRegles = regles.value.data.regle
+
+console.log("coucou", regles.value.data.regle)
 
 // liste des icons
 const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille"]
@@ -107,9 +118,9 @@ const reglesAffichees = ref([]);
 // Fonction pour définir le nombre de règles à afficher en fonction de la largeur de l'écran
 const calculeReglesAffichees = () => {
   if (window.innerWidth <= 768) {
-    reglesAffichees.value = props.regles.slice(0, 3);
+    reglesAffichees.value = mesRegles.slice(0, 3);
   } else {
-    reglesAffichees.value = props.regles.slice(0, 6);
+    reglesAffichees.value = mesRegles.slice(0, 6);
   }
 };
 

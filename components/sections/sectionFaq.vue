@@ -3,7 +3,7 @@
         <h2><span class="bleu">Foire Aux</span> Questions</h2>
 
         <ul class="section_faq-liste">
-            <li class="section_faq-liste-item" v-for="(question, index) in questionsAffichees" :key="index">
+            <li class="section_faq-liste-item" v-for="(question, index) in faq.data.question.slice(0, 3)" :key="index">
                 <!-- bouton radio pour determiner si l'utilisateur à cliqué que cette question ou non -->
                 <input :id="'question_' + index" type="radio" name="questions" />
 
@@ -131,14 +131,15 @@
 </style>
 
 <script setup>
-const props = defineProps({
-    faq: Object,
-});
+// import de Prismic
+const { client } = usePrismic();
 
-
-// Fonction pour définir le nombre de questions à afficher
-const questionsAffichees = computed(() => {
-    return props.faq.slice(0, 3);
-});
+// import du document FAQ
+const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
+  client.getSingle("faq")
+)
+if (!faq.value || faq_error.value){
+  throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
+}
 
 </script>
