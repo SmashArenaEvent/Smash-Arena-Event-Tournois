@@ -7,7 +7,7 @@
         <nav class="footer_pages">
             <ul>
                 <li><RouterLink to="/">Accueil</RouterLink></li>
-                <li><RouterLink to="/">Historique</RouterLink></li>
+                <li><RouterLink to="/historique">Historique</RouterLink></li>
                 <li><RouterLink to="/regles">Règles</RouterLink></li>
                 <li><RouterLink to="/foire-aux-questions">FAQ</RouterLink></li>
                 <li><RouterLink to="/">à propos & contact</RouterLink></li>

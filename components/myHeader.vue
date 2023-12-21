@@ -9,7 +9,7 @@
         <nav class="header-pc_page">
             <ul>
                 <li><RouterLink to="/">Accueil</RouterLink></li>
-                <li><RouterLink to="/">Historique</RouterLink></li>
+                <li><RouterLink to="/historique">Historique</RouterLink></li>
                 <li><RouterLink to="/regles">Règles</RouterLink></li>
                 <li><RouterLink to="/foire-aux-questions">FAQ</RouterLink></li>
                 <li><RouterLink to="/">à Propos & Contact</RouterLink></li>
@@ -46,7 +46,7 @@
                 <nav class="header-mobile_page-nav">
                     <ul>
                         <li><myButton url="/" @click="menuOuvert = !menuOuvert">Accueil</myButton></li>
-                        <li><myButton url="/" @click="menuOuvert = !menuOuvert">Historique</myButton></li>
+                        <li><myButton url="/historique" @click="menuOuvert = !menuOuvert">Historique</myButton></li>
                         <li><myButton url="/regles" @click="menuOuvert = !menuOuvert">Règles</myButton></li>
                         <li><myButton url="/foire-aux-questions" @click="menuOuvert = !menuOuvert">FAQ</myButton></li>
                         <li><myButton url="/" @click="menuOuvert = !menuOuvert">Contact</myButton></li>
