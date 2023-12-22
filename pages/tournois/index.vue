@@ -1,59 +1,77 @@
 <template>
-  <main>
-    <h1>LISTE DE TOUS LES TOURNOIS</h1>
+  <main class="my_section tous_tournois">
+      <h1 class="tous_tournois-titre">Tous <span class="bleu">l</span>es <span class="bleu">t</span>ournois</h1>
 
-    <a href="/">Retour accueil</a>
+      <p class="tous_tournois-texte">Voici l'ensemble des tournois que Smash Arena Event a organisé et prévois.</p>
 
-    <div class="card__tournois">
-      <ul v-for="t in TOURNOIS" :key="t.id">
-        <li>nom : {{ t.tournament.name }}</li>
-        <li>description : {{ t.tournament.description_source }}</li>
-        <li>jeu : {{ t.tournament.game_name }}</li>
-        <li>type : {{ t.tournament.tournament_type }}</li>
-        <li>date de début : {{ t.tournament.started_at }}</li>
-        <li>statut : {{ t.tournament.state }}</li>
-        <a :href="`/tournois/${t.tournament.url}`">
-          Voir la fiche de ce tournois
-        </a>
+      <ul class="tous_tournois-tournois_liste" v-if="TOURNOIS_TOUS.length >= 0">
+          <li class="tous_tournois-tournois_liste-item" v-for="tournoi in TOURNOIS_TOUS" :key="tournoi.id">
+              <cardTournoi v-bind="tournoi.tournament"/>
+          </li>
       </ul>
-    </div>
+
+          <!-- card à afficher lorsqu'il n'y a ni tournois en cours ni prévus -->
+      <div class="my_section main-tournois" v-if="TOURNOIS_TOUS.length == 0">     
+          <cardTournoi/>
+      </div>
   </main>
 </template>
 
-<style lang="scss" scoped>
-.card__tournois {
-  display: flex;
-  flex-direction: column-reverse;
+<style lang="scss">
+.tous_tournois{
 
-  ul {
-    margin: 10px;
-    padding: 20px 40px;
-    border: gray 2px solid;
+  &-titre{
+      &::first-letter{
+          color: $color-main;
+      }
+  }
+
+  &-tournois_liste{
+
+      &-item{
+          margin: $m-medium 0;
+      }
+  }
+
+  @include medium{
+
+      &-tournois_liste{
+
+          &-item{
+              margin: $m-big 0;
+          }
+      }
   }
 }
 </style>
 
 <script setup>
+// import d'axios et des donées des tournois
 import axios from "axios";
 
 const env = useRuntimeConfig();
-const TOURNOIS = ref([]);
+const TOURNOIS_TOUS = ref([]);
 
-const GET_TOURNOIS = axios.create({
-  baseURL: env.public.challongeApiUrl + "/liste_tournois",
+const GET_TOURNOIS_TOUS = axios.create({
+//   baseURL: env.public.challongeApiUrl + `/liste_tournois`,
+baseURL: env.public.challongeApiUrl + `/liste_tournois`,
 });
 
-const fetchTournois = async () => {
-  try {
-    const response = await GET_TOURNOIS.get();
-    TOURNOIS.value = response.data;
-  } catch (error) {
-    console.error(
-      "Une erreur s'est produite lors de la récupération de la liste des tournois.",
-      error
-    );
-  }
+const fetchTournoisTous = async () => {
+try {
+  const response = await GET_TOURNOIS_TOUS.get();
+  TOURNOIS_TOUS.value = response.data;
+  // console.log("DATA : ", TOURNOIS_TERMINES.value)
+} catch (error) {
+  console.error(
+    "Une erreur s'est produite lors de la récupération de la liste de tous les tournois.",
+    error
+  );
+}
 };
 
-onMounted(fetchTournois);
+// Montage de la Vue -----------------------------------------------------------------
+onMounted(() => {
+fetchTournoisTous();
+});
 </script>

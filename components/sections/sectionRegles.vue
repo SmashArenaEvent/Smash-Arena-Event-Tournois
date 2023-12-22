@@ -107,8 +107,6 @@ if (!regles.value || regles_error.value){
 
 const mesRegles = regles.value.data.regle
 
-console.log("coucou", regles.value.data.regle)
-
 // liste des icons
 const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille"]
 
