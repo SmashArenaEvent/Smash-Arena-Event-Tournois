@@ -1,18 +1,32 @@
 <template>
   <main class="my_section tournoi">
-    <h1 class="tournoi_titre">{{ TOURNOI.name }}</h1>
+    <div class="tournoi_entete">
+      <h1 class="tournoi_entete-titre">{{ TOURNOI.name }}</h1>
+  
+      <div class="tournoi_entete-inscription" v-if="TOURNOI.state == 'prochainement'">
+        <myButton class="tournoi_entete-inscription_bouton"
+          :url="`/tournois/${TOURNOI.url}/inscription`" color="blue" size="big">
+          Je Participe
+        </myButton>
+  
+        <p class="tournoi_entete-inscription_texte"><span class="bleu">Dépéchez-vous !</span> Une fois le tournoi commencé, vous ne pourrez plus vous inscrire.</p>
+      </div>
+    </div>
 
-    <iframe
-      v-if="TOURNOI.state === 'underway'"
-      :src="`https://challonge.com/fr/${TOURNOI.url}/module`"
-      width="100%"
-      height="500"
-      frameborder="0"
-      scrolling="auto"
-      allowtransparency="true"
-    ></iframe>
+    <div class="tournoi_match-encours" v-if="TOURNOI.state === 'en cours'">
+      <iframe
+        :src="`https://challonge.com/fr/${TOURNOI.url}/module`"
+        width="100%"
+        height="500"
+        frameborder="0"
+        scrolling="auto"
+        allowtransparency="true"
+      ></iframe>
+    </div>
 
     <div class="tournoi_informations">
+      <h2 class="tournoi_informations-titre" v-if="TOURNOI.state === 'en cours'"><span class="bleu">Les</span> Informations</h2>
+
       <div class="tournoi_description">
         <ul class="tournoi_description-rapide">
           <li>Type : <span class="tournoi_description-rapide_valeur">{{ TOURNOI.tournament_type }}</span></li>
@@ -29,32 +43,49 @@
           <p class="tournoi_infos-date_jour">{{ TOURNOI_date.jour }}</p>
         </div>
   
-        <p class="tournoi_infos-lieu">Batiment B, Campus Montbéliard</p>
+        <p class="tournoi_infos-lieu">Batiment EX CDDP, Campus Universitaire de Montbéliard</p>
       </div>
     </div>
 
-    <!--<a :href="`/tournois/${TOURNOI.url}/inscription`" v-if="TOURNOI.state == 'pending'">
-      S'inscrire à ce tournois
-    </a> -->
+    <div class="tournoi_match" v-if="TOURNOI.state !== 'en cours'">
+      <h2><span class="bleu">Participants</span> & Matchs</h2>
 
-    <iframe
-      v-if="TOURNOI.state !== 'underway'"
-      :src="`https://challonge.com/fr/${TOURNOI.url}/module`"
-      width="100%"
-      height="500"
-      frameborder="0"
-      scrolling="auto"
-      allowtransparency="true"
-    ></iframe>
+      <iframe
+        :src="`https://challonge.com/fr/${TOURNOI.url}/module`"
+        width="100%"
+        height="500"
+        frameborder="0"
+        scrolling="auto"
+        allowtransparency="true"
+      ></iframe>
+    </div>
   </main>
 </template>
 
 <style lang="scss">
 .tournoi{
 
-  &_titre{
-    &::first-line{
-      color: $color-main;
+  &_entete{
+    &-titre{
+      &::first-line{
+        color: $color-main;
+      }
+    }
+
+    &-inscription{
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      display: block;
+      width: 100%;
+      padding: $m-small;
+      background-color: $color-black;
+      text-align: center;
+
+      &_texte{
+        margin-top: 20px;
+      }
     }
   }
 
@@ -63,6 +94,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: $m-medium;
+
+    &-titre{
+      width: 100%;
+      margin: 0;
+      margin-top: $m-big;
+    }
 
     .tournoi_description{
       flex: 1 1 400px;
@@ -81,7 +118,7 @@
     }
   
     .tournoi_infos{
-      flex: 1 0 400px;
+      flex: 1 0 300px;
       display: flex;
       flex-direction: column;
       align-items: end;
@@ -111,7 +148,43 @@
     }
   }
 
+  &_match{
+    margin: $m-big 0;
+  }
+
   @include medium{
+
+    &_entete{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: $m-litle;
+      margin-bottom: $m-big;
+      
+      &-titre{
+        margin: 0;
+      }
+
+      &-inscription{
+        position: relative;
+        left: 0;
+        transform: translate(0);
+        padding: 0;
+        margin: auto;
+        width: fit-content;
+
+        display: flex;
+        flex-wrap: wrap;
+        text-align: left;
+        align-items: center;
+        gap: $m-litle;
+
+        &_texte{
+          margin: 0;
+          max-width: 250px;
+        }
+      }
+    }
 
     &_informations{
 
@@ -133,6 +206,10 @@
           font-size: $pc-font_big;
         }
       }
+    }
+
+    &_match{
+      margin: 200px 0 0 0;
     }
   }
 }
