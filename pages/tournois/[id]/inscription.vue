@@ -17,7 +17,7 @@
           <input class="bouton_envoye" type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
         </form>
     
-        <p class="inscription-formulaire_message">{{ message_inscription }}</p>
+        <p class="inscription-formulaire_message" v-if="message_inscription">{{ message_inscription }}</p>
       </div>
 
       <div class="inscription-tournoi_infos">
