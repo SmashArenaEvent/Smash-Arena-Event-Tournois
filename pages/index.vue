@@ -1,11 +1,11 @@
 <template>
-  <main>
-    <h1 class="my_section main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
+  <main class="my_section">
+    <h1 class="main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
         <br><span class="bleu">T</span>ournois
     </h1>
 
     <!-- liste des tournois en cours -->
-    <section class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length > 0">
+    <section class="main-tournois" v-if="TOURNOIS_ENCOURS.length > 0">
       <h2 class="hero-h2"><span class="bleu">En</span> cours</h2>
       
       <ul class="main-tournois_liste">
@@ -16,7 +16,7 @@
     </section>
 
     <!-- liste des tournois prévus -->
-    <section class="my_section main-tournois" v-if="TOURNOIS_PROCHAIN.length > 0">
+    <section class="main-tournois" v-if="TOURNOIS_PROCHAIN.length > 0">
       <h2 class="hero-h2">Prochainement</h2>
       
       <ul class="main-tournois_liste">
@@ -27,7 +27,7 @@
     </section>
 
     <!-- card à afficher lorsqu'il n'y a ni tournois en cours ni prévus -->
-    <div class="my_section main-tournois" v-if="TOURNOIS_ENCOURS.length == 0 && TOURNOIS_PROCHAIN.length == 0">     
+    <div class="main-tournois" v-if="TOURNOIS_ENCOURS.length == 0 && TOURNOIS_PROCHAIN.length == 0">     
       <cardTournoi/>
     </div>
 
@@ -37,11 +37,16 @@
 
     <sectionAPropos/>
 
+    <deco class="deco deco-1"/>
+    <deco class="deco deco-2"/>
+
   </main>
 </template>
 
 <style lang="scss">
 .main{
+  position: relative;
+
   &-tournois{
     &_liste{
       &-item{
@@ -52,6 +57,12 @@
         }
       }
     }
+  }
+
+  .deco{
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 </style>

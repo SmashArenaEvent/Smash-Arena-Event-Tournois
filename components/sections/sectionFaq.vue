@@ -1,5 +1,5 @@
 <template>
-    <section class="my_section section_faq">
+    <section class="section_faq">
         <h2><span class="bleu">Foire Aux</span> Questions</h2>
 
         <ul class="section_faq-liste">

@@ -1,5 +1,5 @@
 <template>
-    <section class="my_section aPropos">
+    <section class="aPropos">
         <h2><span class="bleu">Notre</span> association</h2>
 
         <ul class="aPropos_liste">

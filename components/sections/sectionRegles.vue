@@ -1,5 +1,5 @@
 <template>
-    <section class="my_section section_regles">
+    <section class="section_regles">
         <h2><span class="bleu">Les règles</span> principales</h2>
 
         <ul class="section_regles-liste">
