@@ -1,17 +1,26 @@
 <template>
   <main class="my_section">
+    <RouterLink :to="`/tournois/${tournoi_url}`">&lt; Retourner à la page du tournoi</RouterLink>
+
     <h1><span class="bleu">{{ TOURNOI.name }}</span> - Inscription</h1>
 
     <div class="inscription">
       <div class="inscription-formulaire">
         <form @submit.prevent="function_inscription" method="post" class="inscription-formulaire_form">
-          <input class="inscription-formulaire_form-text texte-nom" type="text" id="joueur_name" v-model="joueur_name" placeholder="Prénom et Nom" required/>
 
-          <input class="inscription-formulaire_form-text texte-mail" type="text" id="joueur_email" v-model="joueur_email" placeholder="Email (exemple : prenom.nom@edu.univ-fcomte.fr)" required/>
+          <div class="inscription-formulaire_form-text texte-nom">
+            <label for="joueur_name">Prénom NOM</label>
+            <input type="text" id="joueur_name" v-model="joueur_name" placeholder="Didi KONG" required/>
+          </div>
+          
+          <div class="inscription-formulaire_form-text texte-mail">
+            <label for="joueur_email">Email universitaire (prenom.nom@edu.univ-fcomte.fr)</label>
+            <input type="text" id="joueur_email" v-model="joueur_email" placeholder="didi.kong@edu.univ-fcomte.fr" required/>
+          </div>
 
           <div class="inscription-formulaire_form-check">
             <input type="checkbox" id="joueur_check" v-model="joueur_check" required/>
-            <label for="joueur_check">En m'inscrivant à ce tournois, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles">les règles</RouterLink> et partager les données suivante (mon prénom, nom et adresse mail universitaire) à Smash Arena Event pour la bonne organisation du tournoi.</label>
+            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et partager les données suivante (mon prénom, nom et adresse mail universitaire) à Smash Arena Event pour la bonne organisation du tournoi.</label>
           </div>
 
           <input class="bouton_envoye" type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
@@ -47,22 +56,31 @@
     &_form{
 
       &-text{
-        width: 100%;
-        margin: 15px auto;
-        padding: 5px;
-        border: transparent;
-        border-bottom: 2px solid $color-white;
-        background: none;
-        color: $color-white;
-        
-        &:focus{
-          outline: 2px solid $color-main;
+        label{
+          font-weight: $font-weight-bold;
         }
+        
+        input{
+          width: 100%;
+          margin: 5px auto;
+          padding: 5px;
+          border: transparent;
+          border-bottom: 2px solid $color-white;
+          background: none;
+          color: $color-main;
+
+          &:focus{
+            outline: 2px solid $color-main;
+          }
+        }
+      }
+
+      .texte-mail{
+        margin: $m-medium 0;
       }
   
       &-check{
-        margin: 15px auto;
-  
+ 
         input[type="checkbox"]{
           width: 20px;
           height: 20px;
@@ -77,8 +95,7 @@
       .bouton_envoye{
         @include bouton_big;
         display: block;
-        margin: auto;
-        margin-top: $m-litle;
+        margin: $m-medium auto;
         padding: $m-litle $m-small+15;
         min-width: 150px;
         width: fit-content;
@@ -109,7 +126,7 @@
       display: flex;
       align-items: center;
       gap: $m-small;
-
+      
       &::before{
         @include h2;
         content: "!";
@@ -152,19 +169,13 @@
 
     &-formulaire{
       &_form{
-        .texte-nom{
-          margin: 0;
-        }
-
         .texte-mail{
-          margin-top: $m-medium;
+          margin: $m-medium+10 0;
         }
 
         &-check{
           margin: $m-litle 0;
         }
-        
-
       }
     }
 
@@ -196,6 +207,7 @@ const env = useRuntimeConfig();
 const route = useRoute();
 const tournoi_url = route.params.id;
 
+// pour l'inscription
 const joueur_name = ref(null);
 const joueur_email = ref(null);
 const joueur_check = ref(null);
@@ -224,8 +236,13 @@ const function_inscription = async () => {
         donneesFormulaire
       );
       // console.log(response)
+
       if (response.data == "mauvais email"){
-        message_inscription.value = "Vous devez vous inscrire avec votre mail universitaire Pour participer au tournois. Exemple : prenom.nom@edu.univ-fcomte.fr"
+        message_inscription.value = "Vous devez vous inscrire avec votre mail universitaire pour participer au tournoi. Exemple : prenom.nom@edu.univ-fcomte.fr"
+
+      } else if (response.data == "meme email"){
+        message_inscription.value = "Cet email est déjà utilisé par un autre participant."
+        
       } else {
         const router = useRouter();
         router.push(`/tournois/${tournoi_url}`);  
@@ -241,6 +258,7 @@ const function_inscription = async () => {
   }
 };
 
+// pour récupérer les données du tournoi
 const TOURNOI = ref([]);
 const TOURNOI_date = ref("")
 
