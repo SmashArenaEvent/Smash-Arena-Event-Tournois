@@ -120,9 +120,6 @@ main{
         rotate: 120deg;
       }
     }
-
-
-    
   }
 }
 </style>
