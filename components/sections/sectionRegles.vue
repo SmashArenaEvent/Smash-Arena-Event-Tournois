@@ -6,7 +6,7 @@
             <li v-for="(regle, index) in reglesAffichees" :key="index">
 
                 <div class="regle_head">
-                    <myIcon class="regle_icon" :name="tabIcons[index]"/>
+                    <PrismicImage class="regle_icon" :field="regle.icon" />
                     <PrismicText class="regle_titre" :field="regle.titre" />
                 </div>
 
@@ -106,9 +106,6 @@ if (!regles.value || regles_error.value){
 }
 
 const mesRegles = regles.value.data.regle
-
-// liste des icons
-const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille"]
 
 // liste des règles à afficher (change en fonction de la taille d'écran)
 const reglesAffichees = ref([]);

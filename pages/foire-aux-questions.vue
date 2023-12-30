@@ -126,7 +126,7 @@ const { client } = usePrismic();
 
 // import du document Règles
 const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
-  client.getSingle("faq")
+    client.getSingle("faq")
 )
 
 if (!faq.value || faq_error.value){
@@ -135,10 +135,10 @@ if (!faq.value || faq_error.value){
 
 // SEO de la page
 useSeoMeta({
-  title: "Smash Arena Event - FAQ",
-  ogTitle: "Smash Arena Event - La Foire Aux Question",
-  description: "FAQ des événement organisés par l'association Smash Arena Event.",
-  ogDescription: "FAQ des événement organisés par l'association Smash Arena Event.",
-  ogImage: "/img/logo.svg",
+    title: faq.value.data.meta_title,
+    ogTitle: faq.value.data.meta_ogtitle,
+    description: faq.value.data.meta_description,
+    ogDescription: faq.value.data.meta_ogdescription,
+    ogImage: faq.value.data.meta_ogimage,
 })
 </script>

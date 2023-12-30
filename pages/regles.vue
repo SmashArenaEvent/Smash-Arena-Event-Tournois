@@ -6,7 +6,7 @@
             <li v-for="(regle, index) in regles.data.regle" :key="index">
 
                 <div class="regle_head">
-                    <myIcon class="regle_icon" :name="tabIcons[index]"/>
+                    <PrismicImage class="regle_icon" :field="regle.icon" />
                     <PrismicText class="regle_titre" :field="regle.titre" />
                 </div>
 
@@ -161,15 +161,12 @@ if (!regles.value || regles_error.value){
     throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
 }
 
-// liste des icons
-const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille", "oeuf", "pokeball", "fleur", "courrone", "cube", "triangle"]
-
 // SEO de la page
 useSeoMeta({
-  title: "Smash Arena Event - Règles",
-  ogTitle: "Smash Arena Event - Les Règles des tournois",
-  description: "Règles des événements organisés par l'association Smash Arena Event.",
-  ogDescription: "Règles des événements organisés par l'association Smash Arena Event.",
-  ogImage: "/img/logo.svg",
+    title: regles.value.data.meta_title,
+    ogTitle: regles.value.data.meta_ogtitle,
+    description: regles.value.data.meta_description,
+    ogDescription: regles.value.data.meta_ogdescription,
+    ogImage: regles.value.data.meta_ogimage,
 })
 </script>
