@@ -1,47 +1,81 @@
 <template>
-  <main class="my_section tous_tournois">
-      <h1 class="tous_tournois-titre">Tous <span class="bleu">l</span>es <span class="bleu">t</span>ournois</h1>
+    <main class="my_section tous_tournois">
+        <h1 class="tous_tournois-titre">Tous <span class="bleu">l</span>es <span class="bleu">t</span>ournois</h1>
 
-      <p class="tous_tournois-texte">Voici l'ensemble des tournois que Smash Arena Event a organisé et prévois.</p>
+        <p class="tous_tournois-texte">Voici l'ensemble des tournois que Smash Arena Event a organisé et prévois.</p>
 
-      <ul class="tous_tournois-tournois_liste" v-if="TOURNOIS_TOUS.length >= 0">
-          <li class="tous_tournois-tournois_liste-item" v-for="tournoi in TOURNOIS_TOUS" :key="tournoi.id">
-              <cardTournoi v-bind="tournoi.tournament"/>
-          </li>
-      </ul>
+        <ul class="tous_tournois-tournois_liste" v-if="TOURNOIS_TOUS.length >= 0">
+            <li class="tous_tournois-tournois_liste-item" v-for="tournoi in TOURNOIS_TOUS" :key="tournoi.id">
+                <cardTournoi v-bind="tournoi.tournament"/>
+            </li>
+        </ul>
 
-          <!-- card à afficher lorsqu'il n'y a ni tournois en cours ni prévus -->
-      <div class="my_section main-tournois" v-if="TOURNOIS_TOUS.length == 0">     
-          <cardTournoi/>
-      </div>
-  </main>
+            <!-- card à afficher lorsqu'il n'y a ni tournois en cours ni prévus -->
+        <div class="my_section main-tournois" v-if="TOURNOIS_TOUS.length == 0">     
+            <cardTournoi/>
+        </div>
+
+        <deco class="deco deco-1"/>
+        <deco class="deco deco-2"/>
+        <deco class="deco deco-3"/>
+    </main>
 </template>
 
 <style lang="scss">
 .tous_tournois{
+    position: relative;
+    overflow: hidden;
 
-  &-titre{
-      &::first-letter{
-          color: $color-main;
-      }
-  }
+    &-titre{
+        &::first-letter{
+            color: $color-main;
+        }
+    }
 
-  &-tournois_liste{
+    &-tournois_liste{
 
-      &-item{
-          margin: $m-medium 0;
-      }
-  }
+        &-item{
+            margin: $m-medium 0;
+        }
+    }
 
-  @include medium{
+    @include medium{
 
-      &-tournois_liste{
+        &-tournois_liste{
 
-          &-item{
-              margin: $m-big 0;
-          }
-      }
-  }
+            &-item{
+                margin: $m-big 0;
+            }
+        }
+    }
+
+  .deco{
+        z-index: -1;
+        position: absolute;
+        display: none;
+
+        @include medium{
+            display: block;
+
+            &-1{
+                rotate: 70deg;
+                top: -500px;
+                right: 450px;
+            }
+            
+            &-2{
+                rotate: 70deg;
+                top: -93px;
+                right: 1635px;
+            }
+            
+            &-3{
+                rotate: 70deg;
+                bottom: -700px;
+                right: 450px;
+            }
+        }
+    }
 }
 </style>
 

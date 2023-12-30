@@ -76,7 +76,6 @@ main{
   }
 
   .deco{
-    // @include teste;
     z-index: -1;
     position: absolute;
     scale: 0.5;

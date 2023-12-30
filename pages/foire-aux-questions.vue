@@ -15,11 +15,16 @@
             <myButton url="/">Nous Contacter</myButton>
         </div>
 
+        <deco class="deco deco-1"/>
+        <deco class="deco deco-2"/>
+        <deco class="deco deco-3"/>
     </main>
 </template>
 
 <style lang="scss">
 .faq{
+    position: relative;
+    overflow: hidden;
 
     // l'enemble des questions
     &-liste{
@@ -80,6 +85,34 @@
             p{
                 margin: $m-medium 0
             };
+        }
+    }
+
+    .deco{
+        z-index: -1;
+        position: absolute;
+        display: none;
+
+        @include medium{
+            display: block;
+
+            &-1{
+                rotate: 70deg;
+                top: -500px;
+                right: 450px;
+            }
+            
+            &-2{
+                rotate: 70deg;
+                top: -93px;
+                right: 1635px;
+            }
+            
+            &-3{
+                rotate: 70deg;
+                bottom: -700px;
+                right: 450px;
+            }
         }
     }
 }
