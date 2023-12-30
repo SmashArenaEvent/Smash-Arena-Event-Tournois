@@ -1,5 +1,11 @@
 <template>
-  <main class="my_section">
+  <main class="my_section tournoi">
+
+    <!-- style de cette image défini dans pages>tournois>[id]>index -->
+    <div class="deco_persos">
+      <img src="/img/persos_coin.png" alt="">
+    </div>
+    
     <RouterLink :to="`/tournois/${tournoi_url}`">&lt; Retourner à la page du tournoi</RouterLink>
 
     <h1><span class="bleu">{{ TOURNOI.name }}</span> - Inscription</h1>
@@ -197,6 +203,8 @@
     }
   }
 }
+
+
 </style>
 
 <script setup>

@@ -1,5 +1,10 @@
 <template>
   <main class="my_section tournoi">
+
+    <div class="deco_persos">
+      <img src="/img/persos_coin.png" alt="">
+    </div>
+
     <div class="tournoi_entete">
       <h1 class="tournoi_entete-titre">{{ TOURNOI.name }}</h1>
   
@@ -64,6 +69,8 @@
 
 <style lang="scss">
 .tournoi{
+  position: relative;
+  overflow: visible;
 
   &_entete{
     &-titre{
@@ -172,6 +179,7 @@
         padding: 0;
         margin: auto;
         width: fit-content;
+        background: none;
 
         display: flex;
         flex-wrap: wrap;
@@ -210,6 +218,23 @@
 
     &_match{
       margin: 200px 0 0 0;
+    }
+  }
+
+  .deco_persos{
+    z-index: -1;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+    @include large{
+      opacity: 0.3;
+      top: -220px;
+    }
+    
+    @include xxlarge{
+      top: -180px;
     }
   }
 }
