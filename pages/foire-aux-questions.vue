@@ -132,4 +132,13 @@ const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
 if (!faq.value || faq_error.value){
     throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
 }
+
+// SEO de la page
+useSeoMeta({
+  title: "Smash Arena Event - FAQ",
+  ogTitle: "Smash Arena Event - La Foire Aux Question",
+  description: "FAQ des événement organisés par l'association Smash Arena Event.",
+  ogDescription: "FAQ des événement organisés par l'association Smash Arena Event.",
+  ogImage: "/img/logo.svg",
+})
 </script>

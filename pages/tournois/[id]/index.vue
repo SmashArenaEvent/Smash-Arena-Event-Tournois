@@ -294,4 +294,13 @@ function formaterDate(dateString) {
 }
 
 onMounted(fetchTournoi);
+
+// SEO de la page
+useSeoMeta({
+  title: "Smash Arena Event - Fiche Tournoi",
+  ogTitle: "Smash Arena Event - Tournoi orgnaisé par SAE",
+  description: "Fiche d'un tournoi organisé par l'association Smash Arena Event.",
+  ogDescription: "Fiche d'un tournoi organisé par l'association Smash Arena Event.",
+  ogImage: "/img/logo.svg",
+})
 </script>

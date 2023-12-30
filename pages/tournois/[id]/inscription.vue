@@ -203,8 +203,6 @@
     }
   }
 }
-
-
 </style>
 
 <script setup>
@@ -314,4 +312,13 @@ function formaterDate(dateString) {
 }
 
 onMounted(fetchTournoi);
+
+// SEO de la page
+useSeoMeta({
+  title: "Smash Arena Event - Inscription Tournoi",
+  ogTitle: "Smash Arena Event - Inscription à un tournoi orgnaisé par SAE",
+  description: "Inscription à un tournoi organisé par l'association Smash Arena Event.",
+  ogDescription: "Inscription à un tournoi organisé par l'association Smash Arena Event.",
+  ogImage: "/img/logo.svg",
+})
 </script>

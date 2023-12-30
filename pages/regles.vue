@@ -164,4 +164,12 @@ if (!regles.value || regles_error.value){
 // liste des icons
 const tabIcons = ["epee", "etoile", "fleche", "poing", "pacman", "feuille", "oeuf", "pokeball", "fleur", "courrone", "cube", "triangle"]
 
+// SEO de la page
+useSeoMeta({
+  title: "Smash Arena Event - Règles",
+  ogTitle: "Smash Arena Event - Les Règles des tournois",
+  description: "Règles des événements organisés par l'association Smash Arena Event.",
+  ogDescription: "Règles des événements organisés par l'association Smash Arena Event.",
+  ogImage: "/img/logo.svg",
+})
 </script>
