@@ -1,6 +1,6 @@
 <template>
-  <main class="my_section">
-    <h1 class="main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
+  <main>
+    <h1 class="my_section main-h1"><span class="bleu">S</span>mash <span class="bleu">A</span>rena <span class="bleu">E</span>vent
         <br><span class="bleu">T</span>ournois
     </h1>
 
@@ -31,38 +31,98 @@
       <cardTournoi/>
     </div>
 
-    <SectionRegles/>
+    <SectionRegles class="my_section"/>
 
-    <SectionFaq/>
+    <SectionFaq class="my_section"/>
 
-    <sectionAPropos/>
+    <sectionAPropos class="my_section"/>
 
     <deco class="deco deco-1"/>
     <deco class="deco deco-2"/>
+    <deco class="deco deco-3"/>
+    <deco class="deco deco-4"/>
 
   </main>
 </template>
 
 <style lang="scss">
-.main{
+main{
   position: relative;
+  overflow: hidden;
 
-  &-tournois{
-    &_liste{
-      &-item{
-        margin-bottom: $m-medium;
+  .main{
 
-        @include medium{
-          margin-bottom: $m-big;
+    &-h1{
+      padding: $m-small;
+      @include medium{
+        padding: $m-big;
+        padding-bottom: $m-medium;
+      }
+    }
+    
+    &-tournois{
+      padding: 0 $m-small;
+
+      &_liste{
+        &-item{
+          margin-bottom: $m-medium;
+  
+          @include medium{
+            margin-bottom: $m-big;
+          }
         }
       }
     }
   }
 
   .deco{
+    // @include teste;
+    z-index: -1;
     position: absolute;
-    top: 0;
-    left: 0;
+    scale: 0.5;
+
+    &-1{
+      rotate: 45deg;
+      top: -400px;
+      right: 0;
+    }
+
+    &-2
+    &-3,
+    &-4{
+      display: none;
+    }
+
+    @include medium{
+      display: block;
+      scale: 1;
+
+      &-1{
+        rotate: 70deg;
+        top: -500px;
+        right: 450px;
+      }
+      
+      &-2{
+        top: -93px;
+        right: 1635px;
+        rotate: 70deg;
+      }
+
+      &-3{
+        top: 45%;
+        right: -150px;
+      }
+
+      &-4{
+        bottom: -500px;
+        left: 300px;
+        rotate: 120deg;
+      }
+    }
+
+
+    
   }
 }
 </style>
