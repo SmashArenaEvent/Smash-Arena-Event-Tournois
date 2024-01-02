@@ -18,18 +18,21 @@ body{
     padding: $m-small;
 }
 
-h1{
+h1,
+.h1{
     @include h1;
     margin-bottom: $m-litle;
 }
 
-h2{
+h2,
+.h2{
     @include h2;
     margin-bottom: $m-litle;
     text-align: center;
 }
 
-h3{
+h3,
+.h3{
     @include card_title;
 }
 

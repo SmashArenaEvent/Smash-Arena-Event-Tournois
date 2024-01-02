@@ -2,17 +2,33 @@
     <main class="my_section regles">
         <h1 class="regles_titre">Règles</h1>
 
-        <ul class="regles-liste">
-            <li v-for="(regle, index) in regles.data.regle" :key="index">
-
-                <div class="regle_head">
-                    <PrismicImage class="regle_icon" :field="regle.icon" />
-                    <PrismicText class="regle_titre" :field="regle.titre" />
-                </div>
-
-                <PrismicText class="regle_texte" :field="regle.texte" />
+        <ul class="regles_menu">
+            <li v-for="(regle_section, index) in numberOfSections" :key="index">
+                <myButton :url="`#`+regles.data[`partie_titre_${index+1}`][0].spans[0].data.url">
+                    <PrismicText :field="regles.data[`partie_titre_${index+1}`]" /> 
+                </myButton>
             </li>
         </ul>
+        
+        <section :id="regles.data[`partie_titre_${index+1}`][0].spans[0].data.url"
+                class="regles_section"
+                v-for="(regle_section, index) in numberOfSections" :key="index">
+
+            <PrismicText class="h2" :field="regles.data[`partie_titre_${index+1}`]" /> 
+      
+            <ul class="regles_section-liste">
+                <li class="item" v-for="(regle, index) in regles.data[`regle_${index+1}`]" :key="index">
+    
+                    <div class="item_head">
+                        <PrismicImage class="item_head-icon" :field="regle.regle_icon" />
+                        <PrismicText class="item_head-titre" :field="regle.regle_titre" />
+                    </div>
+    
+                    <PrismicText class="item_texte" :field="regle.regle_texte" />
+                </li>
+            </ul>
+
+        </section>
 
         <div class="regles_faq">
             <p>Vous avez des doutes ? Besoin de précisions ? Vous pouvez consulter notre FAQ pour vous éclairer !</p>
@@ -37,67 +53,84 @@
         }
     }
 
-    &-liste{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: $m-small;
+    &_menu{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: $m-litle;
+    }
 
-        li{
-            padding: $m-litle;
-            border: 2px solid $color-main_darken;
-            border-radius: 10px;
-
-            &:nth-child(2n-1){
-                background: $color-main_darken;
-            }
-
-            .regle_head{
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 15px;
-
-                .regle_icon{
-                    display: inline-block;
-                    width: 2rem;
-                    height: 2rem;
-                    fill: $color-white;
-                    stroke: $color-white;
+    &_section{
+        padding: $m-medium 0;
+        
+        &-liste{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: $m-small;
+    
+            .item{
+                padding: $m-litle;
+                border: 2px solid $color-main_darken;
+                border-radius: 10px;
+    
+                &:nth-child(2n-1){
+                    background: $color-main_darken;
                 }
     
-                .regle_titre{
-                    display: inline-block;
-                    width: fit-content;
-                    font-family: $font-title;
-                    font-size: $mobile-font_semibig;
-                    text-transform: uppercase;
+                &_head{
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 15px;
+    
+                    &-icon{
+                        display: inline-block;
+                        width: 2rem;
+                        height: 2rem;
+                        fill: $color-white;
+                        stroke: $color-white;
+                    }
+        
+                    &-titre{
+                        display: inline-block;
+                        width: fit-content;
+                        font-family: $font-title;
+                        font-size: $mobile-font_semibig;
+                        text-transform: uppercase;
+                    }
                 }
             }
         }
 
         @include medium{
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: $m-medium;
-
-            li{
-                padding: $m-medium;
-
-                .regle_head{
-                    margin-bottom: $m-litle;
-                    gap: 25px;
-                    
-                    .regle_icon{
-                        width: 3rem;
-                        height: 3rem;
+            padding: $m-big 0;
+            
+            &-liste{
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: $m-medium;
+    
+                .item{
+                    padding: $m-medium;
+    
+                    &_head{
+                        margin-bottom: $m-litle;
+                        gap: 25px;
+                        
+                        &-icon{
+                            width: 3rem;
+                            height: 3rem;
+                        }
+    
+                        &-titre{
+                            font-size: $pc-font_semibig;
+                        }
                     }
-
-                    .regle_titre{
-                        font-size: $pc-font_semibig;
-                    }
+    
                 }
 
             }
         }
+
     }
 
     &_faq{
@@ -160,6 +193,23 @@ const { data: regles, error: regles_error } = await useAsyncData("regles", () =>
 if (!regles.value || regles_error.value){
     throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
 }
+
+
+// Fonction pour obtenir le nombre de sections à afficher
+const numberOfSections = ref(getNumberOfSections());
+
+function getNumberOfSections() {
+  let sectionCount = 0;
+  const regleSection = regles.value.data;
+  // Compter le nombre de partie_titre_X disponibles dans les données
+  for (const key in regleSection) {
+    if (key.startsWith('partie_titre_')) {
+      sectionCount++;
+    }
+  }
+  return sectionCount;
+}
+
 
 // SEO de la page
 useSeoMeta({
