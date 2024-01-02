@@ -6,11 +6,11 @@
             <li v-for="(regle, index) in reglesAffichees" :key="index">
 
                 <div class="regle_head">
-                    <PrismicImage class="regle_icon" :field="regle.icon" />
-                    <PrismicText class="regle_titre" :field="regle.titre" />
+                    <PrismicImage class="regle_icon" :field="regle.regle_icon" />
+                    <PrismicText class="regle_titre" :field="regle.regle_titre" />
                 </div>
 
-                <PrismicRichText class="regle_texte" :field="regle.texte" />
+                <PrismicRichText class="regle_texte" :field="regle.regle_texte" />
             </li>
         </ul>
 
@@ -105,7 +105,12 @@ if (!regles.value || regles_error.value){
   throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section regles"})
 }
 
-const mesRegles = regles.value.data.regle
+const mesRegles = [regles.value.data.regle_1[0],
+                  regles.value.data.regle_2[0],
+                  regles.value.data.regle_3[0],
+                  regles.value.data.regle_1[1],
+                  regles.value.data.regle_2[1],
+                  regles.value.data.regle_3[1]]
 
 // liste des règles à afficher (change en fonction de la taille d'écran)
 const reglesAffichees = ref([]);

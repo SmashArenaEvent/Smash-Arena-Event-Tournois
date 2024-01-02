@@ -61,7 +61,7 @@ main{
     }
     
     &-tournois{
-      padding: 0 $m-small;
+      padding: $m-small;
 
       &_liste{
         &-item{
