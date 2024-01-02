@@ -2,13 +2,29 @@
     <main class="my_section faq">
         <h1 class="faq_titre"><span class="bleu">F</span>oire <span class="bleu">A</span>ux <span class="bleu">Q</span>uestions</h1>
 
-        <ul class="faq-liste">
-            <li class="faq-liste-item" v-for="(question, index) in faq.data.question" :key="index">
-                <PrismicText :field="question.question_titre" class="faq-liste-item_question"/>
-
-                <PrismicText :field="question.question_reponse" class="faq-liste-item_reponse"/>
+        <ul class="faq_menu">
+            <li v-for="(faq_menu, index) in numberOfSections" :key="index">
+                <myButton :url="`#`+faq.data[`partie_titre_${index+1}`][0].spans[0].data.url">
+                    <PrismicText :field="faq.data[`partie_titre_${index+1}`]" /> 
+                </myButton>
             </li>
         </ul>
+
+        <section :id="faq.data[`partie_titre_${index+1}`][0].spans[0].data.url"
+                class="faq_section"
+                v-for="(faq_section, index) in numberOfSections" :key="index">
+
+            <PrismicText class="h2" :field="faq.data[`partie_titre_${index+1}`]" /> 
+
+            <ul class="faq_section-liste">
+                <li class="faq_section-liste-item" v-for="(question, index) in faq.data[`question_${index+1}`]" :key="index">
+                    <PrismicText :field="question.question_titre" class="faq_section-liste-item_question"/>
+
+                    <PrismicText :field="question.question_reponse" class="faq_section-liste-item_reponse"/>
+                </li>
+            </ul>
+
+        </section>
 
         <div class="faq_contact">
             <p>Vous avez encore des questions sans réponse ? Envoyez-nous un message vie nos réseaux sociaux ou notre formulaire de contacte !</p>
@@ -26,46 +42,58 @@
     position: relative;
     overflow: hidden;
 
-    // l'enemble des questions
-    &-liste{
-        width: 100%;
-        
-        // chaque ligne / question
-        &-item{
+    &_menu{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: $m-litle;
+    }
+
+    &_section{
+        padding: $m-medium 0;
+
+        // l'enemble des questions
+        &-liste{
             width: 100%;
-            padding: $m-litle;
-            border-radius: 5px;
-            overflow: hidden;
+            
+            // chaque ligne / question
+            &-item{
+                width: 100%;
+                padding: $m-litle;
+                border-radius: 5px;
+                overflow: hidden;
 
-            // une ligne/question sur 2 a un fond
-            &:nth-child(2n-1){
-                background: $color-main_darken;
-            }
+                // une ligne/question sur 2 a un fond
+                &:nth-child(2n-1){
+                    background: $color-main_darken;
+                }
 
 
-            // le titre de la question
-            &_question{
-                // @include h2;
-                font-family: $font-title;
-                font-size: $mobile-font_semibig;
-            }
+                // le titre de la question
+                &_question{
+                    // @include h2;
+                    font-family: $font-title;
+                    font-size: $mobile-font_semibig;
+                }
 
-            // la réponse
-            &_reponse {
-                margin-top: $m-small;
+                // la réponse
+                &_reponse {
+                    margin-top: $m-small;
+                }
             }
         }
 
         @include medium{
-            &-item{
-                border-radius: 10px;
-                padding: $m-medium;
+            padding: $m-big 0;
 
-                &_question{
-                    font-size: $pc-font_big;
-                }
-
-                &_reponse {
+            &-liste{
+                &-item{
+                    border-radius: 10px;
+                    padding: $m-medium;
+    
+                    &_question{
+                        font-size: $pc-font_big;
+                    }
                 }
             }
         }
@@ -131,6 +159,21 @@ const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
 
 if (!faq.value || faq_error.value){
     throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
+}
+
+// Fonction pour obtenir le nombre de sections à afficher
+const numberOfSections = ref(getNumberOfSections());
+
+function getNumberOfSections() {
+  let sectionCount = 0;
+  const regleSection = faq.value.data;
+  // Compter le nombre de partie_titre_X disponibles dans les données
+  for (const key in regleSection) {
+    if (key.startsWith('partie_titre_')) {
+      sectionCount++;
+    }
+  }
+  return sectionCount;
 }
 
 // SEO de la page

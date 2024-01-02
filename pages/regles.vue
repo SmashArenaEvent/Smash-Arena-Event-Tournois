@@ -3,7 +3,7 @@
         <h1 class="regles_titre">Règles</h1>
 
         <ul class="regles_menu">
-            <li v-for="(regle_section, index) in numberOfSections" :key="index">
+            <li v-for="(regle_menu, index) in numberOfSections" :key="index">
                 <myButton :url="`#`+regles.data[`partie_titre_${index+1}`][0].spans[0].data.url">
                     <PrismicText :field="regles.data[`partie_titre_${index+1}`]" /> 
                 </myButton>

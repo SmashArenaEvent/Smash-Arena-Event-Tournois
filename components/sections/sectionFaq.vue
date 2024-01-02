@@ -3,17 +3,17 @@
         <h2><span class="bleu">Foire Aux</span> Questions</h2>
 
         <ul class="section_faq-liste">
-            <li class="section_faq-liste-item" v-for="(question, index) in faq.data.question.slice(0, 3)" :key="index">
+            <li class="section_faq-liste-item" v-for="(question, index) in numberOfSections" :key="index">
                 <!-- bouton radio pour determiner si l'utilisateur à cliqué que cette question ou non -->
                 <input :id="'question_' + index" type="radio" name="questions" />
 
                 <!-- le titre de la question -->
                 <label class="section_faq-liste-item_question" :for="'question_' + index">
-                    <PrismicText :field="question.question_titre"/>
+                    <PrismicText :field="faq.data[`question_${index+1}`][0].question_titre"/>
                 </label>
 
                 <!-- la réponse à la question, s'affiche ou non -->
-                <PrismicText class="section_faq-liste-item_reponse" :field="question.question_reponse"/>
+                <PrismicText class="section_faq-liste-item_reponse" :field="faq.data[`question_${index+1}`][0].question_reponse"/>
             </li>
         </ul>
 
@@ -140,6 +140,21 @@ const { data: faq, error: faq_error } = await useAsyncData("faq", () =>
 )
 if (!faq.value || faq_error.value){
   throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
+}
+
+// Fonction pour obtenir le nombre de sections à afficher
+const numberOfSections = ref(getNumberOfSections());
+
+function getNumberOfSections() {
+  let sectionCount = 0;
+  const faqSection = faq.value.data;
+  // Compter le nombre de partie_titre_X disponibles dans les données
+  for (const key in faqSection) {
+    if (key.startsWith('partie_titre_')) {
+      sectionCount++;
+    }
+  }
+  return sectionCount;
 }
 
 </script>
