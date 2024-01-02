@@ -106,7 +106,7 @@
             padding: $m-big 0;
             
             &-liste{
-                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
                 gap: $m-medium;
     
                 .item{
