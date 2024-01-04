@@ -12,7 +12,7 @@
 
     <div class="inscription">
       <div class="inscription-formulaire">
-        <form @submit.prevent="function_inscription" method="post" class="inscription-formulaire_form">
+        <form @submit.prevent="function_inscription" method="post" class="inscription-formulaire_form" v-if="!message_inscription_ok">
 
           <div class="inscription-formulaire_form-text texte-nom">
             <label for="joueur_name">Prénom NOM</label>
@@ -33,6 +33,7 @@
         </form>
     
         <p class="inscription-formulaire_message" v-if="message_inscription">{{ message_inscription }}</p>
+        <p class="inscription-formulaire_message_ok" v-if="message_inscription_ok">{{ message_inscription_ok }}</p>
       </div>
 
       <div class="inscription-tournoi_infos">
@@ -138,6 +139,17 @@
         content: "!";
         color: #dd3030;
       }
+
+      &_ok{
+        width: 100%;
+        width: fit-content;
+        margin: $m-litle auto;
+        padding: $m-small;
+        border: 4px solid rgb(30, 225, 69);
+        display: flex;
+        align-items: center;
+        gap: $m-small;
+      }
     }
   }
   
@@ -218,6 +230,7 @@ const joueur_name = ref(null);
 const joueur_email = ref(null);
 const joueur_check = ref(null);
 const message_inscription = ref(null);
+const message_inscription_ok = ref(null);
 
 const GET_NEW_PROFIL = axios.create({
   baseURL: env.public.challongeApiUrl,
@@ -250,8 +263,7 @@ const function_inscription = async () => {
         message_inscription.value = "Cet email est déjà utilisé par un autre participant."
         
       } else {
-        const router = useRouter();
-        router.push(`/tournois/${tournoi_url}`);  
+        message_inscription_ok.value = "Vous êtes inscrit pour participer à ce tournoi ! Si vous ne voyez pas votre pseudo dans l'arbre du tournoi, c'est que le nombre maximum de joueur a été atteind et vous êtes sur liste d'attente. Vous pourrez joueur si un ou des joueurs se désinscrivent."
       }
       
     } catch (error) {

@@ -11,7 +11,7 @@
       <div class="tournoi_entete-inscription" v-if="TOURNOI.state == 'prochainement'">
         <myButton class="tournoi_entete-inscription_bouton"
           :url="`/tournois/${TOURNOI.url}/inscription`" color="blue" size="big">
-          Je Participe
+          Je Participe comme joueur
         </myButton>
   
         <p class="tournoi_entete-inscription_texte"><span class="bleu">Dépéchez-vous !</span> Une fois le tournoi commencé, vous ne pourrez plus vous inscrire.</p>
