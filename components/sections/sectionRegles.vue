@@ -14,8 +14,9 @@
             </li>
         </ul>
 
-        <myButton class="section_regles-button" url="/regles">Découvrir les autres règles</myButton>
-
+        <div class="section_regles-button">
+          <myButton url="/regles">Découvrir les autres règles</myButton>
+        </div>
     </section>
 </template>
 

@@ -17,7 +17,9 @@
             </li>
         </ul>
 
-        <myButton class="section_faq-button" url="/foire-aux-questions">Consulter toute la FAQ</myButton>
+        <div class="section_faq-button">
+            <myButton url="/foire-aux-questions">Consulter toute la FAQ</myButton>
+        </div>
     </section>
 </template>
 
