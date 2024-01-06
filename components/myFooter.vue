@@ -19,7 +19,6 @@
                 <li><myIcon cercle="true" url="https://www.instagram.com/smash_arena_event"/></li>
                 <li><myIcon name = "x" cercle="true" url="https://twitter.com/SmashArenaEvent"/></li>
                 <li><myIcon name = "facebook" cercle="true" url="https://www.facebook.com/people/Smash-Arena-Event/61553864250828"/></li>
-                <li><myIcon name = "twitch" cercle="true"/></li>
             </ul>
         </nav>
 
@@ -125,9 +124,6 @@
             height: fit-content;
 
             ul{
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
                 gap: $m-small;
 
                 li{
