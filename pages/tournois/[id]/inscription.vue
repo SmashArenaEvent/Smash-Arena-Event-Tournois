@@ -26,7 +26,7 @@
 
           <div class="inscription-formulaire_form-check">
             <input type="checkbox" id="joueur_check" v-model="joueur_check" required/>
-            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et partager les données suivante (mon prénom, nom et adresse mail universitaire) à Smash Arena Event pour la bonne organisation du tournoi.</label>
+            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et partager les données suivante (mon prénom, nom et adresse mail universitaire) à Smash Arena Event pour la bonne organisation du tournoi. Ces données sont enregistrées pour une durée minimum d'une année et ne sont partagées à personne.</label>
           </div>
 
           <input class="bouton_envoye" type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
@@ -42,7 +42,7 @@
           <p class="inscription-tournoi_infos-date_jour">{{ TOURNOI_date.jour }}</p>
         </div>
   
-        <p class="inscription-tournoi_infos-lieu">Batiment EX CDDP, Campus Universitaire de Montbéliard</p>
+        <PrismicText :field="prismic_tournoi.data.lieu" class="inscription-tournoi_infos-lieu"/>
       </div>
     </div>
 
@@ -321,6 +321,18 @@ function formaterDate(dateString) {
   const dateFormatee = date.toLocaleDateString('fr-FR', options);
 
   return { heure, jour: dateFormatee };
+}
+
+// import de Prismic
+const { client } = usePrismic();
+
+// import du document Règles
+const { data: prismic_tournoi, error: prismic_tournoi_error } = await useAsyncData(tournoi_url, () =>
+    client.getSingle(tournoi_url)
+)
+
+if (!prismic_tournoi.value || prismic_tournoi_error.value){
+    throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
 }
 
 onMounted(fetchTournoi);

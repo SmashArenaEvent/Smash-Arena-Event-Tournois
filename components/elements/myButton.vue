@@ -1,9 +1,14 @@
 <template>
-    <RouterLink :to="url">
+    <RouterLink v-if="url" :to="url">
         <button class="my_button" :class="className">
             <span class="my_button-text"><slot/></span>
         </button>
     </RouterLink>
+    <a v-if="lien" :href="lien" target="_blank" rel="noopener noreferrer">
+        <button class="my_button" :class="className">
+            <span class="my_button-text"><slot/></span>
+        </button>
+    </a>
 </template>
 
 <style lang="scss">
@@ -66,6 +71,7 @@
 <script setup>
 const props = defineProps({
   url: String,
+  lien: String,
   size: String,
   color: String,
   clicable: Boolean,

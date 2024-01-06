@@ -8,7 +8,6 @@
         <div class="card_tournoi-infos">
             <p class="card_tournoi-infos_date">{{ date }}</p>
             <p class="card_tournoi-infos_heure">{{ heure }}h</p>
-            <p class="card_tournoi-infos_lieu">Le EX-CDDP de Montbéliard</p>
         </div>
 
         <div class="card_tournoi-contenu">
@@ -74,8 +73,7 @@
         gap: $m-small;
         margin: $m-litle 0;
 
-        &_date,
-        &_lieu{
+        &_date{
             font-weight: $font_weight-bold;
         }
 

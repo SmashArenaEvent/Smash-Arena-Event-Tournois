@@ -10,7 +10,7 @@
   
       <div class="tournoi_entete-inscription" v-if="TOURNOI.state == 'prochainement'">
         <myButton class="tournoi_entete-inscription_bouton"
-          :url="`/tournois/${TOURNOI.url}/inscription`" color="blue" size="big">
+          :url="`/tournois/${TOURNOI.id}/inscription`" color="blue" size="big">
           Je Participe comme joueur
         </myButton>
   
@@ -36,7 +36,7 @@
         <ul class="tournoi_description-rapide">
           <li>Type : <span class="tournoi_description-rapide_valeur">{{ TOURNOI.tournament_type }}</span></li>
           <li>Statut : <span class="tournoi_description-rapide_valeur">{{ TOURNOI.state }}</span></li>
-          <li>Nombre de participants : <span class="tournoi_description-rapide_valeur">{{ TOURNOI.participants_count }}</span></li>
+          <li>Nombre de participants : <span class="tournoi_description-rapide_valeur">{{ TOURNOI.participants_count }}</span> / <PrismicText :field="prismic_tournoi.data.nbr_joueur_max" class="tournoi_description-rapide_valeur-max"/></li>
         </ul>
   
         <p class="tournoi_description-texte">{{ TOURNOI.description }}</p>
@@ -48,7 +48,7 @@
           <p class="tournoi_infos-date_jour">{{ TOURNOI_date.jour }}</p>
         </div>
   
-        <p class="tournoi_infos-lieu">Batiment EX CDDP, Campus Universitaire de Montbéliard</p>
+        <PrismicText :field="prismic_tournoi.data.lieu" class="tournoi_infos-lieu"/>
       </div>
     </div>
 
@@ -64,6 +64,24 @@
         allowtransparency="true"
       ></iframe>
     </div>
+
+    <section class="tournoi_section" v-if="TOURNOI.state == 'prochainement'">
+      <h2><span class="bleu tournoi_section-titre">Tu préfère aider ?</span><br/> Soit bénévole pour la journée !</h2>
+
+      <div class="tournoi_section-bouton">
+        <myButton :lien="prismic_tournoi.data.inscription_benevole.url" color="blue" size="big">Je participe comme bénévole</myButton>
+      </div>
+
+      <p class="tournoi_section-texte"><span class="bleu">Attention</span> : tu ne peux pas être bénévole ET participer au tournoi comme joueur en même temps. C'est l'un ou l'autre.</p>
+    </section>
+
+    <section class="tournoi_section">
+      <h2><span class="bleu tournoi_section-titre">Plus d'infos</span> sur l'événement ?</h2>
+
+      <div class="tournoi_section-bouton">
+        <myButton :lien="prismic_tournoi.data.site_vitrine.url">Consulter le site de cet événement</myButton>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -120,6 +138,10 @@
           display: inline-block;
           color: $color-main;
           margin: 10px 0;
+
+          &-max{
+            display: inline;
+          }
         }
       }
     }
@@ -157,6 +179,19 @@
 
   &_match{
     margin: $m-big 0;
+  }
+
+  &_section{
+    margin: $m-big 0;
+
+    &-bouton{
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    &-texte{
+      margin: $m-medium 0;
+    }
   }
 
   @include medium{
@@ -218,6 +253,10 @@
 
     &_match{
       margin: 200px 0 0 0;
+    }
+
+    &_section{
+      margin: 200px 0;
     }
   }
 
@@ -291,6 +330,18 @@ function formaterDate(dateString) {
   const dateFormatee = date.toLocaleDateString('fr-FR', options);
 
   return { heure, jour: dateFormatee };
+}
+
+// import de Prismic
+const { client } = usePrismic();
+
+// import du document Règles
+const { data: prismic_tournoi, error: prismic_tournoi_error } = await useAsyncData(tournoi_url, () =>
+    client.getSingle(tournoi_url)
+)
+
+if (!prismic_tournoi.value || prismic_tournoi_error.value){
+    throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section faq"})
 }
 
 onMounted(fetchTournoi);
