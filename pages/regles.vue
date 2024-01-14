@@ -14,7 +14,7 @@
                 class="regles_section"
                 v-for="(regle_section, index) in numberOfSections" :key="index">
 
-            <PrismicText class="h2" :field="regles.data[`partie_titre_${index+1}`]" /> 
+            <PrismicRichText class="h2 regles_section-titre" :field="regles.data[`partie_titre_${index+1}`]" /> 
       
             <ul class="regles_section-liste">
                 <li class="item" v-for="(regle, index) in regles.data[`regle_${index+1}`]" :key="index">
@@ -62,6 +62,12 @@
 
     &_section{
         padding: $m-medium 0;
+
+        &-titre{
+            strong{
+                color: $color-main
+            }
+        }
         
         &-liste{
             display: grid;

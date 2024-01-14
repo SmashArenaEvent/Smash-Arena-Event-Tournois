@@ -1,7 +1,7 @@
 <template>
     <main class="my_section faq">
         <h1 class="faq_titre"><span class="bleu">F</span>oire <span class="bleu">A</span>ux <span class="bleu">Q</span>uestions</h1>
-
+ 
         <ul class="faq_menu">
             <li v-for="(faq_menu, index) in numberOfSections" :key="index">
                 <myButton :url="`#`+faq.data[`partie_titre_${index+1}`][0].spans[0].data.url">
@@ -14,7 +14,7 @@
                 class="faq_section"
                 v-for="(faq_section, index) in numberOfSections" :key="index">
 
-            <PrismicText class="h2" :field="faq.data[`partie_titre_${index+1}`]" /> 
+            <PrismicRichText class="h2 faq_section-titre" :field="faq.data[`partie_titre_${index+1}`]" /> 
 
             <ul class="faq_section-liste">
                 <li class="faq_section-liste-item" v-for="(question, index) in faq.data[`question_${index+1}`]" :key="index">
@@ -51,6 +51,12 @@
 
     &_section{
         padding: $m-medium 0;
+
+        &-titre{
+            strong{
+                color: $color-main
+            }
+        }
 
         // l'enemble des questions
         &-liste{
