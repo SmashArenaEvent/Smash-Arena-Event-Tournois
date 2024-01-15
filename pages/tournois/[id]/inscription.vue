@@ -26,7 +26,7 @@
 
           <div class="inscription-formulaire_form-check">
             <input type="checkbox" id="joueur_check" v-model="joueur_check" required/>
-            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et partager les données suivante (mon prénom, nom et adresse mail universitaire) à Smash Arena Event pour la bonne organisation du tournoi. Ces données sont enregistrées pour une durée minimum d'une année et ne sont partagées à personne.</label>
+            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et accèpte <RouterLink to="/poilitique-de-confidentialité">la politique de condifentialité de Smash Arena Event</RouterLink> et de <a href="https://challonge.com/privacy_policy" target="_blank" rel="noopener noreferrer">Challonge</a>.</label>
           </div>
 
           <input class="bouton_envoye" type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
