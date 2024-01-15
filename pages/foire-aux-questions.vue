@@ -4,7 +4,7 @@
  
         <ul class="faq_menu">
             <li v-for="(faq_menu, index) in numberOfSections" :key="index">
-                <myButton :url="`#${faq.data[`partie_titre_${index+1}`][0].spans[0].data.url}`">
+                <myButton :url="`#`+faq.data[`partie_titre_${index+1}`][0].spans[0].data.url">
                     <PrismicText :field="faq.data[`partie_titre_${index+1}`]" /> 
                 </myButton>
             </li>
