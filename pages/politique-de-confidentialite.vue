@@ -1,10 +1,10 @@
 <template>
-    <main class="my_section mentions_legales">
-        <h1 class="mentions_legales_titre"><span class="bleu">M</span>entions <span class="bleu">L</span>égales</h1>
+    <main class="my_section politique_confidentialite">
+        <h1 class="politique_confidentialite_titre"><span class="bleu">P</span>olitique <span class="bleu">D</span>e <span class="bleu">C</span>condifentialité</h1>
 
-        <section class="mentions_legales_section" v-for="ml in mentions_legales.data.ml_section">
-            <PrismicRichText class="h2 mentions_legales_section-titre" :field="ml.ml_titre" /> 
-            <PrismicRichText :field="ml.ml_texte" class="mentions_legales_section-texte"/>
+        <section class="politique_confidentialite_section" v-for="pc in politique_confidentialite.data.pc_section">
+            <PrismicRichText class="h2 politique_confidentialite_section-titre" :field="pc.pc_titre" /> 
+            <PrismicRichText :field="pc.pc_texte" class="politique_confidentialite_section-texte"/>
         </section>
 
         <deco class="deco deco-1"/>
@@ -14,7 +14,7 @@
 </template>
 
 <style lang="scss">
-.mentions_legales{
+.politique_confidentialite{
     position: relative;
     overflow: hidden;
 
@@ -89,20 +89,20 @@
 const { client } = usePrismic();
 
 // import du document Règles
-const { data: mentions_legales, error: mentions_legales_error } = await useAsyncData("mentions_legales_tournois", () =>
-  client.getSingle("mention_legales_tournois")
+const { data: politique_confidentialite, error: politique_confidentialite_error } = await useAsyncData("politique_confidentialite_tournois", () =>
+  client.getSingle("politique_confidentialite_tournois")
 )
 
-if (!mentions_legales.value || mentions_legales_error.value){
-    throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section mention_legales_tournois"})
+if (!politique_confidentialite.value || politique_confidentialite_error.value){
+    throw createError({statusCode: 404, statusMessage: "Prismic n'a pas trouvé la section politique_confidentialite_tournois"})
 }
 
 // SEO de la page
 useSeoMeta({
-  title: "Smash Arena Event - Mentions Légales",
-  ogTitle: "Smash Arena Event - Mentions Légales",
-  description: "Pages des Mentiosn Légales de Smash Arena Event.",
-  ogDescription: "Pages des Mentiosn Légales de Smash Arena Event.",
+  title: "Smash Arena Event - Politique de Condifentialité",
+  ogTitle: "Smash Arena Event - Politique de Condifentialité",
+  description: "Pages des Politique de Condifentialité de Smash Arena Event.",
+  ogDescription: "Pages des Politique de Condifentialité de Smash Arena Event.",
   ogImage: "/logo.svg",
 })
 </script>

@@ -24,7 +24,7 @@
 
         <div class="footer_legaux">
             <RouterLink to="/mentions-legales">Mentions légales</RouterLink>
-            <RouterLink to="/">RGPD</RouterLink>
+            <RouterLink to="/politique-de-confidentialite">Politique de Condifentialité</RouterLink>
             <p>© Smash Arena EVenet 2023</p>
         </div>
     </footer>
