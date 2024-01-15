@@ -10,7 +10,7 @@
                 <li><RouterLink to="/historique">Historique</RouterLink></li>
                 <li><RouterLink to="/regles">Règles</RouterLink></li>
                 <li><RouterLink to="/foire-aux-questions">FAQ</RouterLink></li>
-                <li><RouterLink to="/">à propos & contact</RouterLink></li>
+                <li><RouterLink to="/#a-propos">à propos & contact</RouterLink></li>
             </ul>
         </nav>
 
