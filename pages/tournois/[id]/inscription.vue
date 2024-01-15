@@ -6,7 +6,7 @@
       <img src="/img/persos_coin.png" alt="">
     </div>
     
-    <RouterLink :to="`/tournois/${tournoi_url}`">&lt; Retourner à la page du tournoi</RouterLink>
+    <RouterLink class="tournoi_lien" :to="`/tournois/${tournoi_url}`">&lt; Retourner à la page du tournoi</RouterLink>
 
     <h1><span class="bleu">{{ TOURNOI.name }}</span> - Inscription</h1>
 
@@ -26,7 +26,7 @@
 
           <div class="inscription-formulaire_form-check">
             <input type="checkbox" id="joueur_check" v-model="joueur_check" required/>
-            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="bleu">les règles</RouterLink> et accèpte <RouterLink to="/poilitique-de-confidentialité">la politique de condifentialité de Smash Arena Event</RouterLink> et de <a href="https://challonge.com/privacy_policy" target="_blank" rel="noopener noreferrer">Challonge</a>.</label>
+            <label for="joueur_check">En m'inscrivant à ce tournoi, je m'engage à être présent durant l'événement, à respecter <RouterLink to="/regles" class="joueur_check-lien">les règles</RouterLink> et accèpte <RouterLink to="/poilitique-de-confidentialité" class="joueur_check-lien">la politique de condifentialité de Smash Arena Event</RouterLink> et de <a href="https://challonge.com/privacy_policy" target="_blank" rel="noopener noreferrer" class="joueur_check-lien">Challonge</a>.</label>
           </div>
 
           <input class="bouton_envoye" type="submit" name="inscription" id="inscription" value="Je m'inscris"/>
@@ -96,6 +96,14 @@
 
         label{
           margin: 5px;
+
+          .joueur_check-lien{
+            color: $color-main;
+
+            &:hover{
+              text-decoration: underline
+            }
+          }
         }
       }
 
@@ -213,6 +221,13 @@
         font-size: $pc-font_big;
       }
     }
+  }
+}
+
+.tournoi_lien{
+
+  &:hover{
+    text-decoration: underline;
   }
 }
 </style>
