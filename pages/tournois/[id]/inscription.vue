@@ -343,6 +343,6 @@ useSeoMeta({
   ogTitle: "Smash Arena Event - Inscription à un tournoi orgnaisé par SAE",
   description: "Inscription à un tournoi organisé par l'association Smash Arena Event.",
   ogDescription: "Inscription à un tournoi organisé par l'association Smash Arena Event.",
-  ogImage: "/img/logo.svg",
+  ogImage: "/logo.svg",
 })
 </script>

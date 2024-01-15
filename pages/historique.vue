@@ -115,6 +115,6 @@ useSeoMeta({
   ogTitle: "Smash Arena Event - L'Historique des tournois",
   description: "Historique des tournois organisés par l'association Smash Arena Event.",
   ogDescription: "Historique des tournois organisés par l'association Smash Arena Event.",
-  ogImage: "/img/logo.svg",
+  ogImage: "/logo.svg",
 })
 </script>

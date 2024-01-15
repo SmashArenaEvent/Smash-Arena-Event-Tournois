@@ -177,6 +177,6 @@ useSeoMeta({
   ogTitle: "Smash Arena Event - Le Site des tournois",
   description: "Historique et permet l'inscription à tous les tournois organisés par l'association Smash Arena Event.",
   ogDescription: "Historique et permet l'inscription à tous les tournois organisés par l'association Smash Arena Event.",
-  ogImage: "/img/logo.svg",
+  ogImage: "/logo.svg",
 })
 </script>
