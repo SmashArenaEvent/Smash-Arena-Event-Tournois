@@ -23,9 +23,9 @@
         </nav>
 
         <div class="footer_legaux">
-            <RouterLink to="/">Mention légal</RouterLink>
+            <RouterLink to="/mentions-legales">Mentions légales</RouterLink>
             <RouterLink to="/">RGPD</RouterLink>
-            <p>©Smash Arena EVenet 2023</p>
+            <p>© Smash Arena EVenet 2023</p>
         </div>
     </footer>
 </template>
