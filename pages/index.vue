@@ -35,7 +35,9 @@
 
     <SectionFaq class="my_section"/>
 
-    <sectionAPropos id="a-propos" class="my_section"/>
+    <sectionAPropos class="my_section"/>
+
+    <sectionContact id="contact"/>
 
     <deco class="deco deco-1"/>
     <deco class="deco deco-2"/>
