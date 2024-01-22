@@ -48,7 +48,7 @@
       <div class="formulaire_boutons">
         <button
           name="redirect"
-          value="https://web3forms.com/success"
+          value="https://tournois.smash-arena-event.fr/success"
           type="submit"
           class="banger"
         >
@@ -108,6 +108,7 @@
       border: none;
       border-bottom: 2px solid $color-white;
       color: $color-white;
+      background: $color-black;
 
       @include medium {
         border-left: 2px solid $color-white;
