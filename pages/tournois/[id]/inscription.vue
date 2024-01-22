@@ -16,12 +16,12 @@
 
           <div class="inscription-formulaire_form-text texte-nom">
             <label for="joueur_name">Prénom NOM</label>
-            <input type="text" id="joueur_name" v-model="joueur_name" placeholder="Didi KONG" required/>
+            <input type="text" id="joueur_name" v-model="joueur_name" placeholder="Diddy KONG" required/>
           </div>
           
           <div class="inscription-formulaire_form-text texte-mail">
             <label for="joueur_email">Email universitaire (prenom.nom@edu.univ-fcomte.fr)</label>
-            <input type="text" id="joueur_email" v-model="joueur_email" placeholder="didi.kong@edu.univ-fcomte.fr" required/>
+            <input type="text" id="joueur_email" v-model="joueur_email" placeholder="diddy.kong@edu.univ-fcomte.fr" required/>
           </div>
 
           <div class="inscription-formulaire_form-check">
