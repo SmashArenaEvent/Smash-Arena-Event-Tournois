@@ -20,7 +20,7 @@
           </div>
           
           <div class="inscription-formulaire_form-text texte-mail">
-            <label for="joueur_email">Email universitaire (prenom.nom@edu.univ-fcomte.fr)</label>
+            <label for="joueur_email">Email (prenom.nom@edu.univ-fcomte.fr)</label>
             <input type="text" id="joueur_email" v-model="joueur_email" placeholder="diddy.kong@edu.univ-fcomte.fr" required/>
           </div>
 
