@@ -27,6 +27,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: $m-small;
+        max-width: $xl;
+        margin: auto;
 
         li{
             padding: $m-litle;

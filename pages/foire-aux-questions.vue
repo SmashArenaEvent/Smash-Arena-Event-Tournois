@@ -61,6 +61,8 @@
         // l'enemble des questions
         &-liste{
             width: 100%;
+            max-width: $xl;
+            margin: auto;
             
             // chaque ligne / question
             &-item{

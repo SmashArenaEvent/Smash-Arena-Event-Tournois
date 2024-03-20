@@ -62,6 +62,8 @@
 
     &_section{
         padding: $m-medium 0;
+        max-width: $xl2;
+        margin: auto;
 
         &-titre{
             strong{

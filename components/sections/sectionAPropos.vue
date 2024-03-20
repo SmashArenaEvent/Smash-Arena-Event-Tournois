@@ -19,11 +19,12 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
         gap: $m-medium $m-litle;
-        margin: $m-medium 0;
+        max-width: $xl;
+        margin: $m-medium auto;
         
         @include medium{
             gap: $m-big 200px;
-            margin: $m-big 0;
+            margin: $m-big auto;
         }
     }
 
