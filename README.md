@@ -1,75 +1,11 @@
-# Nuxt 3 Minimal Starter
+# Projet de 5ème semestre de BUT MMI
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Dans le cadre du projet de 5ème semestre de mon BUT MMI, j'ai réalisé ce site de tournoi, avec **Nuxt.js** et **Sass**, permettant à des étudiants de s'inscrire et suivre en temps réel les tournois e-port que nous avons organisé.
+<br/>
+<br/>
+Un serveur **Node.js** a également été développé, pour pouvoir récupérer les informations des tournois via **l'api de Challonge**, un site de gestion de tournois en ligne.
+<br/>
+<br/>
+Voici le lien du site : https://tournois.smash-arena-event.fr
+<br/>
+(Le serveur étant sur un hébergeur gratuit, les données mettent environs 1min à s'afficher)
