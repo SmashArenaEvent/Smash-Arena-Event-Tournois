@@ -12,13 +12,19 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/prismic": "^3.0.3",
+    "@slicemachine/adapter-nuxt": "^0.3.66",
     "axios": "^1.5.1",
     "nuxt": "^3.7.4",
     "sass": "^1.69.5",
+    "slice-machine-ui": "^2.12.3",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
   "engines": {
     "node": "^18.17.1"
+  },
+  "dependencies": {
+    "@prismicio/client": "^7.16.1",
+    "@prismicio/vue": "^5.0.3"
   }
 }

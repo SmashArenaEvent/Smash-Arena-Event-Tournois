@@ -31,11 +31,11 @@
       <cardTournoi/>
     </div>
 
-    <SectionRegles class="my_section"/>
+    <!-- <SectionRegles class="my_section"/> -->
 
-    <SectionFaq class="my_section"/>
+    <!-- <SectionFaq class="my_section"/> -->
 
-    <sectionAPropos class="my_section"/>
+    <!-- <sectionAPropos class="my_section"/> -->
 
     <sectionContact id="contact"/>
 

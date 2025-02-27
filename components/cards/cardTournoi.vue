@@ -158,6 +158,7 @@
 </style>
 
 <script setup>
+
 const props = defineProps({
     id: Number,
     name: String,
