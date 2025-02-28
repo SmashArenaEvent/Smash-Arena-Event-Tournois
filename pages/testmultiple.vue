@@ -1,5 +1,4 @@
 <template>
-  <!-- test -->
   <div>
     <h1>Tournois Super Smash Bros - Smash Arena Event</h1>
 
