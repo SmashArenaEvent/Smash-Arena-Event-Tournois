@@ -1,0 +1,23 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git submodule URL with secret token
+        run: |
+          sed -i "s|https://github.com|https://ghp_${{ secrets.GITHUB_TOKEN }}@github.com|g" .gitmodules
+          git submodule update --init --recursive
+
+      - name: Deploy application
+        run: |
+          echo "Deployment steps here..."
