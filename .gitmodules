@@ -1,0 +1,3 @@
+[submodule "src/pychallonge"]
+    path = src/pychallonge
+    url = https://github.com/SmashArenaEvent/pychallonge.git
