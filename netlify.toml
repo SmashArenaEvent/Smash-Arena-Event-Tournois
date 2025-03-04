@@ -1,3 +1,4 @@
 [build]
   command = "sh netlify-build.sh && npm run build" # Exécute ton script + la commande de build
   publish = "public" # Remplace "public" par le dossier où Netlify doit prendre tes fichiers
+  git submodule update --init --recursive
