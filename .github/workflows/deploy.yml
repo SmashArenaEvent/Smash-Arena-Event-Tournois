@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  GITHUB_TOKEN: ${{ secrets.Smash_Arena_Event_Site_globale }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,3 +24,6 @@ jobs:
       - name: Deploy application
         run: |
           echo "Deployment steps here..."
+
+      - name: Clone du repo avec token
+        run: git clone https://${{ secrets.Smash_Arena_Event_Site_globale }}@github.com/SmashArenaEvent/Smash-Arena-Event.git
