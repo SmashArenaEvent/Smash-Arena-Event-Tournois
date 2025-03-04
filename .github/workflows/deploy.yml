@@ -5,25 +5,22 @@ on:
     branches:
       - main
 
-env:
-  GITHUB_TOKEN: ${{ secrets.Smash_Arena_Event_Site_globale }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.Smash_Arena_Event_Site_globale }}
 
-      - name: Set up Git submodule URL with secret token
+      - name: Update Submodules with Token
         run: |
-          sed -i "s|https://github.com|https://ghp_${{ secrets.GITHUB_TOKEN }}@github.com|g" .gitmodules
-          git submodule update --init --recursive
+          git submodule sync
+          git submodule update --init --recursive --remote
 
-      - name: Deploy application
+      - name: Build and Deploy
         run: |
-          echo "Deployment steps here..."
-
-      - name: Clone du repo avec token
-        run: git clone https://${{ secrets.Smash_Arena_Event_Site_globale }}@github.com/SmashArenaEvent/Smash-Arena-Event.git
+          echo "Déploiement en cours..."
