@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Tournois Super Smash Bros - Smash Arena Event</h1>
-
+<!-- do -->
     <div v-for="(tournament, edition) in tournaments" :key="edition" class="tournament">
       <h2>{{ edition }}</h2>
       <h3>{{ tournament.name }}</h3>
