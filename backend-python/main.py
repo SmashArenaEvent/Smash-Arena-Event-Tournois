@@ -8,6 +8,12 @@ CORS(app)
 # Connexion à l'API Challonge
 challonge.set_credentials("Smahs_Arena_Event", "J52am8eIremVpmCsQWpDn8UqdGJRWZDAyOdM4rek")
 
+import os
+challonge.set_credentials(
+    os.getenv("CHALLONGE_USERNAME"),
+    os.getenv("CHALLONGE_API_KEY")
+)
+
 def get_tournament_data(edition):
     """ Récupère les données d'un tournoi donné """
     tournament = challonge.tournaments.show(edition)
@@ -31,5 +37,12 @@ def get_all_tournaments():
     }
     return jsonify(tournaments)
 
+@app.route('/')
+def home():
+    return jsonify({"message": "API fonctionne en distant !"})
+
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
