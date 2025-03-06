@@ -1,14 +1,20 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
+import os
 import challonge
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 # Connexion à l'API Challonge
-challonge.set_credentials("Smahs_Arena_Event", "J52am8eIremVpmCsQWpDn8UqdGJRWZDAyOdM4rek")
+# challonge.set_credentials("Smahs_Arena_Event", "J52am8eIremVpmCsQWpDn8UqdGJRWZDAyOdM4rek")
 
 import os
+print("CHALLONGE_USERNAME:", os.getenv("CHALLONGE_USERNAME"))
+print("CHALLONGE_API_KEY:", os.getenv("CHALLONGE_API_KEY"))
 challonge.set_credentials(
     os.getenv("CHALLONGE_USERNAME"),
     os.getenv("CHALLONGE_API_KEY")
