@@ -17,3 +17,13 @@ npm run build
 
 # Vérification du contenu du dossier de build
 ls -la dist
+
+API_URL="https://smash-arena-event-tournois.onrender.com"
+
+echo "🔍 Vérification de l'API Backend..."
+if curl --output /dev/null --silent --head --fail "$API_URL"; then
+  echo "✅ API disponible"
+else
+  echo "❌ API indisponible. Vérifiez son statut avant le build."
+  exit 1
+fi

@@ -20,11 +20,13 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/tournaments'
 const tournaments = ref({})
+
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:5000/api/tournaments')
+    const response = await axios.get(API_URL)
     tournaments.value = response.data
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error)
