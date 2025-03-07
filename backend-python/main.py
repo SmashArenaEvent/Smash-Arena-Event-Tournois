@@ -51,4 +51,5 @@ def home():
 #     app.run(debug=True)
 
 if __name__ == '__main__':
-     app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.getenv("PORT", 5000))  # Récupère PORT ou 5000 par défaut
+    app.run(host="0.0.0.0", port=port, debug=True)
