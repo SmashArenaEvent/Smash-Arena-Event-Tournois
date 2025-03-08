@@ -27,11 +27,12 @@
         </div>
 
         <div class="card_tournoi-infos card_tournoi-infos_date">Revenez plus tard</div>
-
+        
         <div class="card_tournoi-contenu">Vous pourrez suivre ici les différents tournois lorsqu'ils seront mis en ligne. Il n'y a pour le moment aucun tournoi à suivre. Nous vous invitions à revenir plus tard.</div>
-
+        
         <div class="card_tournoi-img"></div>
     </div>
+    <pre>{{ JSON.stringify(tournaments, null, 2) }}</pre>
 </template>
 
 <style lang="scss">
@@ -158,6 +159,21 @@
 </style>
 
 <script setup>
+
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const API_URL = import.meta.env.VITE_API_URL || 'https://smash-arena-event-tournois.onrender.com/api/tournaments'
+const tournaments = ref({})
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(API_URL)
+    tournaments.value = response.data
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données :", error)
+  }
+})
 
 const props = defineProps({
     id: Number,
