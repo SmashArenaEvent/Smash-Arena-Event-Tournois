@@ -20,7 +20,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://smash-arena-event-tournois.onrender.com'
+const API_URL = import.meta.env.VITE_API_URL || 'https://smash-arena-event-tournois.onrender.com/api/tournaments'
 const tournaments = ref({})
 
 onMounted(async () => {
