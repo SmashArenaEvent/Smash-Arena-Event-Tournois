@@ -23,7 +23,6 @@ import axios from 'axios'
 const API_URL = import.meta.env.VITE_API_URL || 'https://smash-arena-event-tournois.onrender.com'
 const tournaments = ref({})
 
-
 onMounted(async () => {
   try {
     const response = await axios.get(API_URL)
