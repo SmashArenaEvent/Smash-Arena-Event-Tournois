@@ -26,7 +26,8 @@ def get_tournament_data(edition):
     participants = challonge.participants.index(tournament["id"])
 
     return {
-        "tournament": tournament,  # Retourne toutes les infos du tournoi
+        "name": tournament["name"],
+        "started_at": tournament["started_at"],
         "participants": [
             {"id": p["id"], "name": p["name"]}
             for p in participants
